@@ -23,31 +23,69 @@
 		 }
 		/* Safari 4.0 - 8.0 */
 		@-webkit-keyframes example {
-    	        0%{left:40%; top:0px;opacity: 0}
-  	        10%{opacity: 0.1}
+    	  0%   {left:0px; top:0px;}
+  	    10%  {opacity: 0.5}
    		20%  {opacity: 0.3}
-   		40%  {opacity: 0.5}
-   		50%  {left:0; top:0px; opacity: 1}
+   		40%  {opacity: 0.1}
+   		50%  {left:80%; top:0px; opacity: 0}
+   		60%  {opacity: 0.1}
+   		80%  {opacity: 0.3}
+   		90%  {opacity: 0.5}
+    	100% {left:0px; top:0px; opacity: 1}
         }
 
 		/* Standard syntax */
 		@keyframes example {
-  	        0%{left:40%; top:0px;opacity: 0}
-  	        10%{opacity: 0.1}
+  	    0%   {left:40%; top:0px;opacity: 0}
+  	    10%  {opacity: 0.1}
    		20%  {opacity: 0.3}
    		40%  {opacity: 0.5}
    		50%  {left:0; top:0px; opacity: 1}
+   		
         }
 
     li{
       display: inline;
     }
+
+    #arrow.affix{
+         
+          right: 0;
+          bottom: 30%;
+    }
     </style>
-    
+    <script type="text/javascript">
+      
+      $(document).ready(function(){
+        $('#arrow').affix({offset:{top:100}});
+        $('#brand').affix({offset:{top:100}});
+        $('#arrow').on('affix.bs.affix',function(event){
+             document.getElementById('arrow').style.visibility="visible";
+      });
+        $('#brand').on('affix.bs.affix',function(event){
+             document.getElementById('brand').style.visibility="visible";
+      });
+         $('#arrow').on('affix-top.bs.affix',function(event){
+             document.getElementById('arrow').style.visibility="hidden";
+      });
+       $('#brand').on('affix-top.bs.affix',function(event){
+             document.getElementById('brand').style.visibility="hidden";
+      });
+         
+      });
+
+      function move()
+      {
+        $('body,html').animate({
+          scrollTop:0,
+        },600);
+      }
+      
+    </script>
 </head>
-<body>
+<body >
 <div class="container-fluid" style="padding: 0">
-<nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0;margin: 0;border: 0;background-color:rgb(16,16,16)">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0;margin: 0;border: 0;background-color: rgb(16,16,16)">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -55,7 +93,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>      
-     
+      <a class="navbar-brand" href="#" style="visibility: hidden;color: white" id="brand">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Habula</b> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
      
@@ -67,7 +105,7 @@
   </div>
 </nav> 
 </div>
-<div class="jumbotron" style="background-color: rgb(16, 16, 16);color: white">
+<div class="jumbotron" style="background-color: rgb(16, 16, 16);color: white" id="jumbo">
 <div style="padding: 0px 10%">
   <h1 id="title"><div class="row"><div class="col-xs-8"><img src="logo.jpg"  class="img-circle" style="display: inline"></div><div class="col-xs-4">
 <div style="margin-left:10px;margin-top: 8px">abula</div></div></div></h1><br>
@@ -76,8 +114,10 @@
 </div>
 </div>
 
+ <p style="background-color: rgb(16,16,16);padding: 12px;color: white;visibility: hidden;" id="arrow" onclick="move()"><span class="glyphicon glyphicon-chevron-up"  ></span></p>
+
 <div class="container">
-<div class="panel panel-default" style="border-radius: 0;margin:0px 20%;border: 1px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
+<div class="panel panel-default" style="border-radius: 0;margin:0px 20%;border: 1px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)" id="first_post">
   <div class="panel-heading" style="border: 0">
    <div  class="row">
          <div class="col-xs-0"></div>
@@ -101,10 +141,10 @@
   </div>
 
   <div class="row" style="display: none;" id="comment">
-  <div class="col-xs-12">
-    <div class="form-group">
-       <input type="text" name="comment" placeholder="Type your comment here and press enter" id="comment_enter" class="form-control" style="border-radius: 0">
-    </div>
+  <div class="col-xs-12"><form>
+    <div class="form-group" style="margin: 0">
+       <input type="text" name="comment" placeholder="Type your comment here and press enter" id="comment_enter" class="form-control" style="border-radius: 0; margin-left: 2px;margin-right: 2px">
+    </div></form>
   </div>
   </div>
 </div>
@@ -165,7 +205,7 @@
 
 <div style="background-color: rgb(16, 16, 16);color: white;">
 <div class="container">
-  <ul style="list-style-type: none;padding: 3.4% 8%;">
+  <ul style="list-style-type: none;padding: 3% 8%;">
     <li>&nbsp;&nbsp;&nbsp;Habula @2017&nbsp;&nbsp;</li>
     <li>&nbsp;&nbsp;&nbsp;<a href="#">User&nbsp;Agreement</a>&nbsp;&nbsp;</li>
     <li>&nbsp;&nbsp;&nbsp;<a href="#">Privacy&nbsp;Policy</a>&nbsp;&nbsp;</li>
