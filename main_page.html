@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Habula</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <style type="text/css">
+    	h1#title
+    	 {
+    		width: 100px;
+    		height: 100px;
+    		position: relative;
+            -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+            -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+    		animation-name: example;
+    		animation-duration: 10s;
+    		animation-timing-function: ease;
+    		animation-iteration-count: infinite;
+		 }
+		/* Safari 4.0 - 8.0 */
+		@-webkit-keyframes example {
+    	  0%   {left:0px; top:0px;}
+  	    10%  {opacity: 0.5}
+   		20%  {opacity: 0.3}
+   		40%  {opacity: 0.1}
+   		50%  {left:80%; top:0px; opacity: 0}
+   		60%  {opacity: 0.1}
+   		80%  {opacity: 0.3}
+   		90%  {opacity: 0.5}
+    	100% {left:0px; top:0px; opacity: 1}
+        }
+
+		/* Standard syntax */
+		@keyframes example {
+  	    0%   {left:0px; top:0px;}
+  	    10%  {opacity: 0.5}
+   		20%  {opacity: 0.3}
+   		40%  {opacity: 0.1}
+   		50%  {left:80%; top:0px; opacity: 0}
+   		60%  {opacity: 0.1}
+   		80%  {opacity: 0.3}
+   		90%  {opacity: 0.5}
+    	100% {left:0px; top:0px; opacity: 1}
+        }
+
+    li{
+      display: inline;
+    }
+    </style>
+    
+</head>
+<body>
+<div class="container-fluid" style="padding: 0">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0;margin: 0;border: 0">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>      
+      <a class="navbar-brand" href="#" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Habula</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+     
+      <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> 
+</div>
+<div class="jumbotron" style="background-color: rgb(16, 16, 16);color: white">
+<div style="padding: 0px 10%">
+  <h1 id="title"><div class="row"><div class="col-xs-8"><img src="logo.jpg"  class="img-circle" style="display: inline"></div><div class="col-xs-4">
+<div style="margin-left:10px;margin-top: 8px">abula</div></div></div></h1><br>
+  <p style="margin-top: -20px;text-align: justify;color: rgb(230, 230, 230)">The main motto of habula is to connect the engineers all over India. Through this we are trying to enligthen the students across various parts of India about the events which are occurring in various colleges in India.</p>
+  <p></p>
+</div>
+</div>
+
+<div class="container">
+<div class="panel panel-default" style="border-radius: 0;margin:0px 20%;border: 1px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
+  <div class="panel-heading" style="border: 0">
+   <div  class="row">
+         <div class="col-xs-0"></div>
+         <div class="col-xs-1">  
+   	      <img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div>
+   	      <div class="col-xs-11"> <b>Kanakaraju Gullapudi</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
+         </div>
+        
+   </div>
+  <div class="panel-body" style="border: 0">
+  <div class="row">
+  	     <div class="col-xs-1"></div>
+  	     <div class="col-xs-10">
+  	     <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.</div>
+  	     </div>
+  	     <div class="col-xs-1"></div>
+  </div>
+  </div>
+  <div class="panel-footer" style="border: 0"> <div class="row"><div class="col-xs-1"></div><div class="col-xs-11"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="#" style="text-decoration: none;">Like</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>&nbsp;<a href="#" style="text-decoration: none;" onclick="document.getElementById('comment').style.display='block'">Comment</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="#" style="text-decoration: none;">Share</a></div>
+  </div>
+  </div>
+
+  <div class="row" style="display: none;" id="comment">
+  <div class="col-xs-12">
+    <div class="form-group">
+       <input type="text" name="comment" placeholder="Type your comment here and press enter" id="comment_enter" class="form-control" style="border-radius: 0">
+    </div>
+  </div>
+  </div>
+</div>
+
+<br><br><br>
+
+<div class="panel panel-default" style="border-radius: 0;margin:0px 20%;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
+  <div class="panel-heading" style="border: 0">
+   <div  class="row">
+         <div class="col-xs-0"></div>
+         <div class="col-xs-1">  
+   	      <img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div>
+   	      <div class="col-xs-11"> <b>Raman Vanakalla</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
+         </div>
+        
+   </div>
+  <div class="panel-body" style="border: 0">
+  <div class="row">
+  	     <div class="col-xs-1"></div>
+  	     <div class="col-xs-10">
+  	     <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.</div>
+  	     </div>d
+  	     <div class="col-xs-1"></div>
+  </div>
+  </div>
+  <div class="panel-footer" style="border: 0"> <div class="row"><div class="col-xs-1"></div><div class="col-xs-11"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="#" style="text-decoration: none;">Like</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>&nbsp;<a href="#" style="text-decoration: none;">Comment</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="#" style="text-decoration: none;">Share</a></div>
+  </div>
+  </div>
+</div>
+
+<br><br><br>
+
+<div class="panel panel-default" style="border-radius: 0;margin:0px 20%;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
+  <div class="panel-heading" style="border: 0">
+   <div  class="row">
+         <div class="col-xs-0"></div>
+         <div class="col-xs-1">  
+   	      <img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div>
+   	      <div class="col-xs-11"> <b>Vijay Raj, the selfie addict</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
+         </div>
+        
+   </div>
+  <div class="panel-body" style="border: 0">
+  <div class="row">
+  	     <div class="col-xs-1"></div>
+  	     <div class="col-xs-10">
+  	     <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.</div>
+  	     </div>d
+  	     <div class="col-xs-1"></div>
+  </div>
+  </div>
+  <div class="panel-footer" style="border: 0"> <div class="row"><div class="col-xs-1"></div><div class="col-xs-11"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="#" style="text-decoration: none;">Like</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>&nbsp;<a href="#" style="text-decoration: none;">Comment</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="#" style="text-decoration: none;">Share</a></div>
+  </div>
+  </div>
+</div>
+<br><br><br><br>
+</div>
+
+<div style="background-color: rgb(16, 16, 16);color: white;">
+<div class="container">
+  <ul style="list-style-type: none;padding: 3.4% 8%;">
+    <li>&nbsp;&nbsp;&nbsp;Habula @2017&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">User&nbsp;Agreement</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Privacy&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Community&nbsp;Guidelines</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Cookie&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Copyright&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Guest&nbsp;Controls</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Language</a></li>
+
+  </ul>
+  
+</div>
+</div>
+</body>
+</html>
