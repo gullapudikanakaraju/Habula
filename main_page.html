@@ -111,7 +111,7 @@
      
       <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">
         <li><a href="#regModal" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#myModal"  data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+        <li><a href="#logModal"  data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
       </ul>
     </div>
   </div>
@@ -282,7 +282,7 @@
       </div> 
 
       <div class="form-group">
-        <select class="form-control" id="select_college" required style="border-radius: 0;padding-left: 9px">
+        <select class="form-control" id="select_college" required style="border-radius: 0;padding-left: 9px" limit="5">
           <option>College</option>
           <option>National Institute of Technology, Delhi</option>
           <option>National Institute of Technology, Warangal</option>
@@ -302,6 +302,7 @@
           <option>National Institute of Technology, Allahabad</option>
           <option>National Institute of Technology, Calicut</option>
           <option>National Institute of Technology, Jaipur</option>
+
         </select>
       </div>
       
@@ -345,6 +346,77 @@
 
     <a href="#regModal" data-dismiss="modal" class="text-center" onclick="log_in_modal()" style="text-decoration: none">I already have a membership</a><br><br><br>
 </div>
+</div></div></div></div>
 
+
+<!--login Modal -->
+  <div class="modal fade" id="logModal" role="dialog" style="margin-top: 1%">
+    <div class="modal-dialog" style="width:400px;margin:auto">
+     <div class="modal-content" style="border-radius: 0">
+        <div class="modal-header" style="background-color:#262626; color: white;font-family: Open Sans">
+      
+          <button style="color:white;" type="button" class="close" data-dismiss="modal" title="close">&times;</button>
+          <h4 class="modal-title" ><b>Login Form </b></h4>
+
+        </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-2" style="margin-left: -12px"><img src="logo.jpg"  class="img-circle" style="display: inline" width="60" height="60"></div>
+        <div class="col-xs-4">
+          <h3><div style="margin-top: 12px;margin-left: -2px">abula</div></h3>
+        </div>
+     </div>
+
+      <div style="margin-top:10px;margin-left: 10%;margin-right: 10%">
+              
+        <p style="text-align: center;">Sign in to start your session</p><br>
+        <form name="parameters" >      
+       
+     
+        <div class="form-group has-feedback">
+            <input type="email" id="login" name="login" class="form-control" placeholder="Email" autofocus tabindex="1" autocomplete="off" style="border-radius: 0">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        
+        <div class="form-group has-feedback">
+            <input type="password" id="password1" name="password" class="form-control" placeholder="Password" tabindex="2" style="border-radius: 0">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+                
+        <div class="row">
+            <div class="col-xs-8">
+              <div class="checkbox icheck" id="lady">
+                  <label style="padding-left: 0">
+                    <input type="checkbox" id="che">&nbsp;&nbsp;Remember Me
+                  </label>
+              </div>
+            </div>
+            <div class="col-xs-4">
+          
+              <button type="button" id="submit" name="submit" value="Send data" onclick="validate()" class="btn btn-primary btn-block btn-flat" tabindex="4" style="border-radius: 0">Sign In</button>
+              <a href="#logModal" button type="button" value="Send data" class="btn btn-primary btn-block btn-flat" tabindex="5" data-dismiss="modal" onclick="reg_modal_on()" style="border-radius: 0">Register </a>
+            </div>
+        </div>
+        </form>
+    
+        <a href="#logModal" tabindex="6" data-dismiss="modal" onclick="forgot_on_modal()" style="text-decoration: none;">I forgot my password</a><br><br><br>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+
+<script type="text/javascript">
+   function reg_modal_on()
+   {
+      setTimeout(function(){$('#regModal').modal();},420);
+   }
+
+    function log_in_modal()
+   {
+      setTimeout(function(){$('#logModal').modal();},420);
+   }
+</script>
 </body>
 </html>
