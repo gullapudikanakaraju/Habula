@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Habula</title>
-	<meta charset="utf-8">
+  <title>Habula</title>
+  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="./logo.jpg">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,40 +21,50 @@
     </script>
 
     <style type="text/css">
-    	h1#title
-    	 {
-    		width: 100px;
-    		height: 100px;
-    		position: relative;
+      h1#title
+       {
+        width: 100px;
+        height: 100px;
+        position: relative;
             -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
             -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
-    		animation-name: example;
-    		animation-duration: 10s;
-    		animation-timing-function: ease;
-    		animation-iteration-count: 2;
-		 }
-		/* Safari 4.0 - 8.0 */
-		@-webkit-keyframes example {
-    	  0%   {left:0px; top:0px;}
-  	    10%  {opacity: 0.5}
-   		20%  {opacity: 0.3}
-   		40%  {opacity: 0.1}
-   		50%  {left:80%; top:0px; opacity: 0}
-   		60%  {opacity: 0.1}
-   		80%  {opacity: 0.3}
-   		90%  {opacity: 0.5}
-    	100% {left:0px; top:0px; opacity: 1}
+        animation-name: example;
+        animation-duration: 10s;
+        animation-timing-function: ease;
+        animation-iteration-count: 2;
+     }
+    /* Safari 4.0 - 8.0 */
+    @-webkit-keyframes example {
+        0%   {left:0px; top:0px;}
+        10%  {opacity: 0.5}
+      20%  {opacity: 0.3}
+      40%  {opacity: 0.1}
+      50%  {left:80%; top:0px; opacity: 0}
+      60%  {opacity: 0.1}
+      80%  {opacity: 0.3}
+      90%  {opacity: 0.5}
+      100% {left:0px; top:0px; opacity: 1}
         }
 
-		/* Standard syntax */
-		@keyframes example {
-  	    0%   {left:40%; top:0px;opacity: 0}
-  	    10%  {opacity: 0.1}
-   		20%  {opacity: 0.3}
-   		40%  {opacity: 0.5}
-   		50%  {left:0; top:0px; opacity: 1}
-   		
+    /* Standard syntax */
+    @keyframes example {
+        0%   {left:40%; top:0px;opacity: 0}
+        10%  {opacity: 0.1}
+      20%  {opacity: 0.3}
+      40%  {opacity: 0.5}
+      50%  {left:0; top:0px; opacity: 1}
+      
         }
+
+        @media only screen and (max-width: 768px)
+    {
+        #name{margin-top: 20px;}
+    }
+       
+       @media (max-width: 1050px)
+    {
+      .panel-default{margin: 5%;}
+    }
 
     li{
       display: inline;
@@ -119,7 +129,7 @@
 </div>
 <div class="jumbotron" style="background-color: rgb(16, 16, 16);color: white" id="jumbo">
 <div style="padding: 0px 10%">
-  <h1 id="title"><div class="row"><div class="col-xs-8"><img src="logo.jpg"  class="img-circle" style="display: inline"></div><div class="col-xs-4">
+  <h1 id="title"><div class="row"><div class="col-xs-8"><img src="logo.jpg"  class="img-circle" style="display: inline"></div><div class="col-xs-4" id="name">
 <div style="margin-left:10px;margin-top: 8px">abula</div></div></div></h1><br>
   <p style="margin-top: -20px;text-align: justify;color: rgb(230, 230, 230)">The main motto of habula is to connect the engineers all over India. Through this we are trying to enligthen the students across various parts of India about the events which are occurring in various colleges in India.</p>
   <p></p>
@@ -134,18 +144,18 @@
    <div  class="row">
          <div class="col-xs-0"></div>
          <div class="col-xs-1" >  
-   	      <img src="bulb.jpg" class="img-circle" width="40px" height="40px" ></div>
-   	      <div class="col-xs-10" style="text-align: justify;"> <b>Kanakaraju Gullapudi</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
+          <img src="bulb.jpg" class="img-circle" width="40px" height="40px" ></div>
+          <div class="col-xs-10" style="text-align: justify;"> <b>Kanakaraju Gullapudi</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
          </div>
         
    </div>
   <div class="panel-body" style="border: 0">
   <div class="row">
-  	     <div class="col-xs-1" ></div>
-  	     <div class="col-xs-10">
-  	     <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.</div>
-  	     </div>
-  	     <div class="col-xs-1"></div>
+         <div class="col-xs-1" ></div>
+         <div class="col-xs-10">
+         <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.</div>
+         </div>
+         <div class="col-xs-1"></div>
   </div>
   </div>
   <div class="panel-footer" style="border: 0"> <div class="row"><div class="col-xs-1"></div><div class="col-xs-11"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="#" style="text-decoration: none;">Like</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>&nbsp;<a href="#" style="text-decoration: none;" onclick="document.getElementById('comment').style.display='block'">Comment</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="#" style="text-decoration: none;">Share</a></div>
@@ -168,18 +178,18 @@
    <div  class="row">
          <div class="col-xs-0"></div>
          <div class="col-xs-1">  
-   	      <img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div>
-   	      <div class="col-xs-11" style="text-align: justify;"> <b>Raman Vanakalla</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
+          <img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div>
+          <div class="col-xs-11" style="text-align: justify;"> <b>Raman Vanakalla</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
          </div>
         
    </div>
   <div class="panel-body" style="border: 0">
   <div class="row">
-  	     <div class="col-xs-1"></div>
-  	     <div class="col-xs-10">
-  	     <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.</div>
-  	     </div>
-  	     <div class="col-xs-1"></div>
+         <div class="col-xs-1"></div>
+         <div class="col-xs-10">
+         <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.</div>
+         </div>
+         <div class="col-xs-1"></div>
   </div>
   </div>
   <div class="panel-footer" style="border: 0"> <div class="row"><div class="col-xs-1"></div><div class="col-xs-11"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="#" style="text-decoration: none;">Like</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>&nbsp;<a href="#" style="text-decoration: none;" onclick="document.getElementById('comment1').style.display='block'">Comment</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="#" style="text-decoration: none;">Share</a></div>
@@ -201,18 +211,18 @@
    <div  class="row">
          <div class="col-xs-0"></div>
          <div class="col-xs-1">  
-   	      <img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div>
-   	      <div class="col-xs-11" style="text-align: justify;"> <b>Vijay Raj, the selfie addict</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
+          <img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div>
+          <div class="col-xs-11" style="text-align: justify;"> <b>Vijay Raj, the selfie addict</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
          </div>
         
    </div>
   <div class="panel-body" style="border: 0">
   <div class="row">
-  	     <div class="col-xs-1"></div>
-  	     <div class="col-xs-10">
-  	     <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.</div>
-  	     </div>
-  	     <div class="col-xs-1"></div>
+         <div class="col-xs-1"></div>
+         <div class="col-xs-10">
+         <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.</div>
+         </div>
+         <div class="col-xs-1"></div>
   </div>
   </div>
   <div class="panel-footer" style="border: 0"> <div class="row"><div class="col-xs-1"></div><div class="col-xs-11"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="#" style="text-decoration: none;">Like</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>&nbsp;<a href="#" style="text-decoration: none;" onclick="document.getElementById('comment2').style.display='block'">Comment</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="#" style="text-decoration: none;">Share</a></div>
