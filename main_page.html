@@ -4,10 +4,22 @@
 	<title>Habula</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./logo.jpg">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+    <link rel="stylesheet" href="iCheck/square/blue.css">
+    <script src="iCheck/icheck.min.js"></script>
+  
+    <script>
+      $(function () {
+      $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+        });
+      });
+    </script>
+
     <style type="text/css">
     	h1#title
     	 {
@@ -98,7 +110,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
      
       <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#regModal" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="#myModal"  data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
       </ul>
     </div>
@@ -234,7 +246,96 @@
 </div>
 </div>
 
+<!--register Modal -->
+  <div class="modal fade" id="regModal" role="dialog" >
+    <div class="modal-dialog" style="width:400px;margin:auto">
+      <div class="modal-content" style="border-radius: 0">
+        <div class="modal-header" style="background-color:#262626; color: white;font-family: Open Sans">
+      
+          <button style="color:white;" type="button" class="close" data-dismiss="modal" title="close">&times;</button>
+          <h4 class="modal-title">Registration Form</h4>
 
+        </div>
+        <div class="modal-body">
+    
+<div style="margin-top:10px;margin-left: 10%;margin-right: 10%">
+  
+    <p style="text-align: center;">Register a new membership</p><br>
+
+    <form action="#" method="post" onsubmit="return check()">
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Full name" id="name" required  autocomplete="off" autofocus style="border-radius: 0">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="email" class="form-control" placeholder="Email" id="email" required autocomplete="off" style="border-radius: 0">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div> 
+
+      <div class="form-group">
+        <select class="form-control" id="select_college" required style="border-radius: 0;padding-left: 9px">
+          <option>College</option>
+          <option>National Institute of Technology, Delhi</option>
+          <option>National Institute of Technology, Warangal</option>
+          <option>National Institute of Technology, Tirichy</option>
+          <option>National Institute of Technology, Suratkal</option>
+          <option>National Institute of Technology, Allahabad</option>
+          <option>National Institute of Technology, Calicut</option>
+          <option>National Institute of Technology, Jaipur</option>
+          <option>National Institute of Technology, Srinagar</option>
+          <option>National Institute of Technology, Surat</option>
+          <option>National Institute of Technology, Uttarakand</option>
+          <option>National Institute of Technology, Rourkela</option>
+          <option>National Institute of Technology, Delhi</option>
+          <option>National Institute of Technology, Warangal</option>
+          <option>National Institute of Technology, Tirichy</option>
+          <option>National Institute of Technology, Suratkal</option>
+          <option>National Institute of Technology, Allahabad</option>
+          <option>National Institute of Technology, Calicut</option>
+          <option>National Institute of Technology, Jaipur</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <select class="form-control" id="select_branch" required style="border-radius: 0;padding-left: 9px">
+          <option>Branch</option>
+          <option>Electronics and Communication Engineering</option>
+          <option>Computer Science Engineering</option>
+          <option>Electrical Engineering</option>
+          <option>Mechanical Engineering</option>
+          <option>Civil Engineering</option>
+          <option>Metallurgy</option>
+          <option>Robotics</option>
+          <option>Aeronautical Engineering</option>
+          <option>Marine Engineering</option>
+        </select>
+      </div>
+
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Password" id="password" required autocomplete="off" style="border-radius: 0">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" class="form-control" placeholder="Retype password" id="re_enter_password" required autocomplete="off" style="border-radius: 0">
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck" >
+            <label style="padding-left: 0">
+              <input type="checkbox" required checked id="che1"> &nbsp;&nbsp;I agree to the <a href="#" style="text-decoration: none;">terms</a>
+            </label>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" style="border-radius: 0">Register</button>
+          <button type="button" class="btn btn-primary btn-block btn-flat" style="border-radius: 0">Reset</button>
+        </div>
+      </div>
+    </form>   
+
+    <a href="#regModal" data-dismiss="modal" class="text-center" onclick="log_in_modal()" style="text-decoration: none">I already have a membership</a><br><br><br>
+</div>
 
 </body>
 </html>
