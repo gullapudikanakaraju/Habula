@@ -273,11 +273,11 @@
 
     <form action="#" method="post" onsubmit="return check()">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Full name" id="name" required  autocomplete="off" autofocus style="border-radius: 0">
+        <input type="text" class="form-control" placeholder="Full name" id="name_reg" required  autocomplete="off" autofocus style="border-radius: 0">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" id="email" required autocomplete="off" style="border-radius: 0">
+        <input type="email" class="form-control" placeholder="Email" id="email_reg" required autocomplete="off" style="border-radius: 0">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div> 
 
@@ -322,11 +322,11 @@
       </div>
 
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" id="password" required autocomplete="off" style="border-radius: 0">
+        <input type="password" class="form-control" placeholder="Password" id="password_reg" required autocomplete="off" style="border-radius: 0">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Retype password" id="re_enter_password" required autocomplete="off" style="border-radius: 0">
+        <input type="password" class="form-control" placeholder="Retype password" id="re_enter_password_reg" required autocomplete="off" style="border-radius: 0">
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
       </div>
       <div class="row">
@@ -375,12 +375,12 @@
        
      
         <div class="form-group has-feedback">
-            <input type="email" id="login" name="login" class="form-control" placeholder="Email" autofocus tabindex="1" autocomplete="off" style="border-radius: 0">
+            <input type="email" id="email_login" name="email_login" class="form-control" placeholder="Email" autofocus tabindex="1" autocomplete="off" style="border-radius: 0">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         
         <div class="form-group has-feedback">
-            <input type="password" id="password1" name="password" class="form-control" placeholder="Password" tabindex="2" style="border-radius: 0">
+            <input type="password" id="password_login" name="password_login" class="form-control" placeholder="Password" tabindex="2" style="border-radius: 0">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
                 
@@ -394,7 +394,7 @@
             </div>
             <div class="col-xs-4">
           
-              <button type="button" id="submit" name="submit" value="Send data" onclick="validate()" class="btn btn-primary btn-block btn-flat" tabindex="4" style="border-radius: 0">Sign In</button>
+              <button type="button" id="submit" name="submit" value="Send data"  class="btn btn-primary btn-block btn-flat" tabindex="4" style="border-radius: 0">Sign In</button>
               <a href="#logModal" button type="button" value="Send data" class="btn btn-primary btn-block btn-flat" tabindex="5" data-dismiss="modal" onclick="reg_modal_on()" style="border-radius: 0">Register </a>
             </div>
         </div>
@@ -407,6 +407,51 @@
  </div>
 </div>
 
+ <!--Forgot Modal -->
+<div class="modal fade" id="forgotModal" role="dialog" style="margin-top: 1%">
+  <div class="modal-dialog" style="width:400px;margin:auto">
+    <div class="modal-content" style="border-radius: 0">
+        <div class="modal-header" style="background-color:#262626; color: white;font-family: Open Sans">
+      
+          <button  type="button" class="close" data-dismiss="modal" title="close"><span style="color:white" >&times;</span></button>
+          <h4 class="modal-title" ><b>Reset Password </b></h4>
+
+        </div>
+        <div class="modal-body ">
+            <div class="row">
+              <div class="col-xs-4"></div>
+              <div class="col-xs-2" style="margin-left: -12px"><img src="logo.jpg"  class="img-circle" style="display: inline" width="60" height="60"></div>
+              <div class="col-xs-4">
+              <h3><div style="margin-top: 12px;margin-left: -2px">abula</div></h3>
+              </div>
+            </div>
+
+        <div style="margin-top:10px;margin-left: 10%;margin-right: 10%">
+           
+              <p style="text-align: center;">Enter your registered Email Id</p>
+
+              <form name="parameters">
+              <div class="form-group has-feedback">
+                 <input type="email" id="email_forgot" name="email_forgot" class="form-control" placeholder="Email" autofocus autocomplete="off" style="border-radius: 0">
+                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              </div>
+              <div class="row">
+              <div class="col-xs-6">
+              </div>
+              <div class="col-xs-6" >
+                  <button type="button" name="submit" value="Send data"  class="btn btn-primary btn-flat" style="margin-top:10px;border-radius: 0">Reset </button>&nbsp;&nbsp;
+                  <button type="button" name="back" value="back" onclick="val()" data-target="#forgotModal" data-dismiss="modal" class="btn btn-primary btn-flat"  style="margin-top:10px;border-radius: 0">Back</button><br><br>
+              </div>
+              </div> 
+              </form>
+           
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
 <script type="text/javascript">
    function reg_modal_on()
    {
@@ -417,6 +462,16 @@
    {
       setTimeout(function(){$('#logModal').modal();},420);
    }
+
+   function forgot_on_modal()
+   {
+      setTimeout(function(){$('#forgotModal').modal();},420);
+   }
+
+  function val()
+  {
+      setTimeout(function(){$('#logModal').modal();},420);
+  }
 </script>
 </body>
 </html>
