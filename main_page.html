@@ -21,18 +21,78 @@
     </script>
 
     <style type="text/css">
+      #overlay
+      {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: none;
+        background-color: rgba(0,0,0,0.8);
+        cursor: pointer;
+        z-index: 20
+      }
+      #text
+      {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        color: black;
+        background-color: white;
+        padding: 2% 4%;
 
+        text-align: center;
+        font-size: 15px
+      }
+      #arrow
+      {
+        background-color: rgb(16,16,16);
+        padding: 4px;
+        color: white;
+        visibility: hidden;
+        cursor: pointer;
+      }
+      .post_heading
+      {
+        padding-left: 15px;
+      }
       #raju
       {
         margin:0px 20%;
       }
- 
+  
+      #habula_space
+      {
+        margin-left: 45%;
+      }
+
       .modal-dialog
       {
         width: 380px;
         margin:auto;
       }
-        
+       
+      #community_footer
+      {
+        padding-left: 2px;
+      } 
+       #copyright_footer
+      {
+        padding-left: 2px;
+      } 
+
+      .modal
+      {
+        margin-top: 1%;
+      }
+      .modal_brand_space
+      {
+        margin-top: 12px;
+        margin-left: -2px;
+      }
+
       h1#title
        {
         width: 100px;
@@ -43,29 +103,161 @@
         animation-name: example;
         animation-duration: 10s;
         animation-timing-function: ease;
-        animation-iteration-count: 2;
+        animation-iteration-count: 1;
      }
     /* Safari 4.0 - 8.0 */
     @-webkit-keyframes example {
-        0%   {left:0px; top:0px;}
-        10%  {opacity: 0.5}
+      0%   {left:40%; top:0px;opacity: 0}
+      10%  {opacity: 0.1}
       20%  {opacity: 0.3}
-      40%  {opacity: 0.1}
-      50%  {left:80%; top:0px; opacity: 0}
-      60%  {opacity: 0.1}
-      80%  {opacity: 0.3}
-      90%  {opacity: 0.5}
-      100% {left:0px; top:0px; opacity: 1}
+      40%  {opacity: 0.5}
+      50%  {left:0; top:0px; opacity: 1} 
         }
     /* Standard syntax */
     @keyframes example {
-        0%   {left:40%; top:0px;opacity: 0}
-        10%  {opacity: 0.1}
+      0%   {left:40%; top:0px;opacity: 0}
+      10%  {opacity: 0.1}
       20%  {opacity: 0.3}
       40%  {opacity: 0.5}
       50%  {left:0; top:0px; opacity: 1}
       
         }
+    
+    /* this is to change the padding-left of profile pic present in every post */
+    @media only screen and (max-width: 400px)
+    {
+      .profile_pic
+      {
+        padding-left: 8px;
+      }
+    }
+
+    /* this is to change the padding-left of post heading */
+    @media only screen and (max-width: 650px)
+    {
+      .post_heading
+      {
+        padding-left: 30px;
+      }
+    }
+
+    /* this is to change the gap between logo and 'bula' text present in modals (i.e. logModal, regModal, forgotModal) */
+    @media only screen and (max-width: 403px)
+    {
+       .modal_brand_space
+       {
+          margin-top: 12px;
+          margin-left: 4px;
+       }
+    }
+    
+    /* this is to remove the margin-top of all the modals (i.e. logModal, regModal, forgotModal) */
+    @media only screen and (max-width: 500px)
+    {
+       .modal
+      {
+        margin-top: 0;
+      }
+    }
+
+    /* this is to remove the margin-left of habula word in the header (i.e. top of the web page) */
+    @media only screen and (max-width: 767px)
+    {
+       #habula_space
+      {
+        margin-left: 0;
+      }
+      #text
+      {
+        width: 40%;
+        padding: 4% 1%;
+        margin: auto;
+
+      }
+    }
+
+    @media only screen and (max-width: 600px)
+    {
+      #text
+      {
+        width: 45%;
+        margin: auto;
+        padding: 4% 3%;
+        
+      }
+    }
+
+    @media only screen and (max-width: 450px)
+    {
+      #text
+      {
+        width: 60%;
+        margin: auto;
+        padding: 5% 4%;
+        
+      }
+    }
+
+    @media only screen and (max-width: 400px)
+    {
+      #text
+      {
+        width: 68%;
+        margin: auto;
+        padding: 5% 4%;
+        
+      }
+    }
+
+    @media only screen and (max-width: 350px)
+    {
+      #text
+      {
+        width: 75%;
+        margin: auto;
+        padding: 5% 4%;
+        
+      }
+    }
+
+    /* these are for adjusting the footer (i.e. bottom of the web page) in mobiles of different resolutions */
+    @media only screen and (max-width: 636px) 
+    {
+      #community_footer
+      {
+        padding-left: 0;
+      }
+    }
+
+     @media only screen and (max-width: 504px) 
+    {
+      #copyright_footer
+      {
+        padding-left: 0;
+      }
+    }
+
+     @media only screen and (max-width: 440px) 
+    {
+      #community_footer
+      {
+        padding-left: 6px;
+      }
+    }
+      @media only screen and (max-width: 440px) 
+    {
+      #copyright_footer
+      {
+        padding-left: 8px;
+      }
+    }
+    @media only screen and (max-width: 356px) 
+    {
+      #copyright_footer,#community_footer
+      {
+        padding-left: 0px;
+      }
+    }
 
     /* to change css when width of view port is less than 768 pixels */
     /* this is to control the location of Habula Text which is moving */
@@ -76,6 +268,13 @@
         {
           margin-left:-8px;
         }
+    }
+
+    @media only screen and (width: 768px)
+    {
+      #name{
+        margin-top: -2px;
+      }
     }
     
     /* to change css when width of view port is greater than 768 pixels */
@@ -147,8 +346,8 @@
     <script type="text/javascript">
       
       $(document).ready(function(){
-        $('#arrow').affix({offset:{top:100}});
-        $('#brand').affix({offset:{top:100}});
+        $('#arrow').affix({offset:{top:500}});
+        $('#brand').affix({offset:{top:90}});
         $('#arrow').on('affix.bs.affix',function(event){
              document.getElementById('arrow').style.visibility="visible";
       });
@@ -182,13 +381,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>      
-      <a class="navbar-brand" href="#" style="visibility: hidden;color: white" id="brand">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Habula</b> </a>
+      <a class="navbar-brand" href="#" style="visibility: hidden;color: white" id="brand"><b  id="habula_space">Habula</b> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
      
       <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">
-        <li><a href="#regModal" data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#logModal"  data-toggle="modal" data-backdrop="static"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+        <li><a href="#regModal" data-toggle="modal" data-backdrop="true"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#logModal"  data-toggle="modal" data-backdrop="true"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
       </ul>
     </div>
   </div>
@@ -196,23 +395,23 @@
 </div>
 <div class="jumbotron" style="background-color: rgb(16, 16, 16);color: white" id="jumbo">
 <div style="padding: 0px 10%">
-  <h1 id="title"><div class="row"><div class="col-xs-8"><img src="logo.jpg"  class="img-circle" style="display: inline"></div><div class="col-xs-4" id="name">
+  <h1 id="title"><div class="row"><div class="col-xs-8"><img src="logo.jpg"  class="img-circle" style="display: inline" alt="H"></div><div class="col-xs-4" id="name">
 <div style="margin-left:10px;margin-top: 8px">abula</div></div></div></h1><br>
-  <p style="margin-top: -20px;text-align: justify;color: rgb(230, 230, 230)">The main motto of habula is to connect the engineers all over India. Through this we are trying to enligthen the students across various parts of India about the events which are occurring in various colleges in India.</p>
+  <p style="margin-top: -20px;text-align: justify;color: rgb(230, 230, 230)">Bridging the gap and creating a cohesive link amongst the engineering fraternity is the main motto of Habula. It intends to keep all the budding and established engineers organised about the various occurring events all across Indian Colleges. Keep your calendar updated and be a part of this journey.</p>
   <p></p>
 </div>
 </div>
 
- <p style="background-color: rgb(16,16,16);padding: 12px;color: white;visibility: hidden;cursor: pointer;" id="arrow" onclick="move()"><span class="glyphicon glyphicon-chevron-up"  ></span></p>
+ <p id="arrow" onclick="move()"><span class="glyphicon glyphicon-chevron-up"  ></span></p>
 
 <div class="container-fluid"  id="raju">
 <div class="panel panel-default" style="border-radius: 0;border: 1px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)" id="first_post">
   <div class="panel-heading" style="border: 0">
    <div  class="row">
-         <div class="col-sm-0"></div>
-         <div class="col-sm-1" >  
+         <div class="col-xs-0"></div>
+         <div class="col-xs-1 profile_pic" >  
           <img src="bulb.jpg" class="img-circle" width="40px" height="40px" ></div>
-          <div class="col-sm-10" style="text-align: justify;"> <b>Kanakaraju Gullapudi</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
+          <div class="col-xs-10 post_heading" style="text-align: justify;"> <b>Kanakaraju Gullapudi</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
          </div>
         
    </div>
@@ -225,28 +424,43 @@
          <div class="col-sm-1"></div>
   </div>
   </div>
-  <div class="panel-footer" style="border: 0"> <div class="row"><div class="col-sm-1"></div><div class="col-sm-11"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="#" style="text-decoration: none;">Like</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>&nbsp;<a href="#" style="text-decoration: none;" onclick="document.getElementById('comment').style.display='block'">Comment</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="#" style="text-decoration: none;">Share</a></div>
+  <div class="panel-footer" style="border: 0">
+    <div class="row">
+       <div class="col-sm-1"></div>
+       <div class="col-sm-11">
+        <span class="glyphicon glyphicon-thumbs-up"></span>
+        <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>&nbsp;&nbsp;&nbsp;&nbsp;  
+  
+        <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>
+        <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1234.2">Comment</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <span class="glyphicon glyphicon-share-alt"></span>
+        <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
+        </div>
+    </div>
+    <div class="row">
+     <div class="col-sm-12">
+     <form>
+       <div class="form-group" style="margin: 0">
+         <input type="text" name="comment" placeholder="Type your comment here and press enter" id="1234.2.1" class="form-control" style="border-radius: 0;border: 0" autocomplete="off">
+       </div>
+     </form>
+  </div>
   </div>
   </div>
 
-  <div class="row" style="display: none;" id="comment">
-  <div class="col-sm-12"><form>
-    <div class="form-group" style="margin: 0">
-       <input type="text" name="comment" placeholder="Type your comment here and press enter" id="comment_enter" class="form-control" style="border-radius: 0;border: 0">
-    </div></form>
-  </div>
-  </div>
+  
 </div>
 
-<br><br><br>
+<br>
 
 <div class="panel panel-default" style="border-radius: 0;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
   <div class="panel-heading" style="border: 0">
    <div  class="row">
-         <div class="col-sm-0"></div>
-         <div class="col-sm-1">  
+         <div class="col-xs-0"></div>
+         <div class="col-xs-1 profile_pic">  
           <img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div>
-          <div class="col-sm-11" style="text-align: justify;"> <b>Raman Vanakalla</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
+          <div class="col-xs-11 post_heading" style="text-align: justify;"> <b>Raman Vanakalla</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
          </div>
         
    </div>
@@ -259,27 +473,41 @@
          <div class="col-sm-1"></div>
   </div>
   </div>
-  <div class="panel-footer" style="border: 0"> <div class="row"><div class="col-sm-1"></div><div class="col-sm-11"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="#" style="text-decoration: none;">Like</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>&nbsp;<a href="#" style="text-decoration: none;" onclick="document.getElementById('comment1').style.display='block'">Comment</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="#" style="text-decoration: none;">Share</a></div>
-  </div>
-  </div>
-  <div class="row" style="display: none;" id="comment1">
-  <div class="col-sm-12"><form>
-    <div class="form-group" style="margin: 0">
-       <input type="text" name="comment" placeholder="Type your comment here and press enter" id="comment_enter" class="form-control" style="border-radius: 0;border: 0">
-    </div></form>
-  </div>
+  <div class="panel-footer" style="border: 0"> 
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+          <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>
+          <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="5678.2">Comment</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+          <span class="glyphicon glyphicon-share-alt"></span>
+          <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <form>
+          <div class="form-group" style="margin: 0">
+            <input type="text" name="comment" placeholder="Type your comment here and press enter" id="5678.2.1" class="form-control" style="border-radius: 0;border: 0" autocomplete="off">
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
-<br><br><br>
+<br>
 
 <div class="panel panel-default" style="border-radius: 0;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
   <div class="panel-heading" style="border: 0">
    <div  class="row">
-         <div class="col-sm-0"></div>
-         <div class="col-sm-1">  
+         <div class="col-xs-0"></div>
+         <div class="col-xs-1 profile_pic">  
           <img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div>
-          <div class="col-sm-11" style="text-align: justify;"> <b>Vijay Raj, the selfie addict</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
+          <div class="col-xs-11 post_heading" style="text-align: justify;"> <b>Vijay Raj, the selfie addict</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b></div>
          </div>
         
    </div>
@@ -292,29 +520,45 @@
          <div class="col-sm-1"></div>
   </div>
   </div>
-  <div class="panel-footer" style="border: 0"> <div class="row"><div class="col-sm-1"></div><div class="col-sm-11"><span class="glyphicon glyphicon-thumbs-up"></span>&nbsp;<a href="#" style="text-decoration: none;">Like</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>&nbsp;<a href="#" style="text-decoration: none;" onclick="document.getElementById('comment2').style.display='block'">Comment</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-share-alt"></span>&nbsp;<a href="#" style="text-decoration: none;">Share</a></div>
-  </div>
-  </div>
-  <div class="row" style="display: none;" id="comment2">
-  <div class="col-sm-12"><form>
-    <div class="form-group" style="margin: 0">
-       <input type="text" name="comment" placeholder="Type your comment here and press enter" id="comment_enter" class="form-control" style="border-radius: 0;border: 0">
-    </div></form>
-  </div>
+  <div class="panel-footer" style="border: 0"> 
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11">
+           <span class="glyphicon glyphicon-thumbs-up"></span>
+           <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+           <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>
+           <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1289.2">Comment</button>&nbsp;&nbsp;&nbsp;&nbsp;
+
+           <span class="glyphicon glyphicon-share-alt"></span>
+           <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+      <form>
+        <div class="form-group" style="margin: 0">
+          <input type="text" name="comment" placeholder="Type your comment here and press enter" id="1289.2.1" class="form-control" style="border-radius: 0;border: 0" autocomplete="off">
+        </div>
+      </form>
+      </div>
+    </div>
   </div>
 </div>
 <br><br><br><br>
 </div>
 
+<!-- footer -->
+
 <div style="background-color: rgb(16, 16, 16);color: white;">
 <div class="container">
-  <ul style="list-style-type: none;padding: 3% 8%;">
-    <li>&nbsp;&nbsp;&nbsp;Habula @2017&nbsp;&nbsp;</li>
+  <ul style="list-style-type: none;padding: 3% 7%;">
+    <li>&nbsp;&nbsp;&nbsp;Habula ©2017&nbsp;&nbsp;</li>
     <li>&nbsp;&nbsp;&nbsp;<a href="#">User&nbsp;Agreement</a>&nbsp;&nbsp;</li>
     <li>&nbsp;&nbsp;&nbsp;<a href="#">Privacy&nbsp;Policy</a>&nbsp;&nbsp;</li>
-    <li>&nbsp;&nbsp;&nbsp;<a href="#">Community&nbsp;Guidelines</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#"  id="community_footer">Community&nbsp;Guidelines</a>&nbsp;&nbsp;</li>
     <li>&nbsp;&nbsp;&nbsp;<a href="#">Cookie&nbsp;Policy</a>&nbsp;&nbsp;</li>
-    <li>&nbsp;&nbsp;&nbsp;<a href="#">Copyright&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#" id="copyright_footer">Copyright&nbsp;Policy</a>&nbsp;&nbsp;</li>
     <li>&nbsp;&nbsp;&nbsp;<a href="#">Guest&nbsp;Controls</a>&nbsp;&nbsp;</li>
     <li>&nbsp;&nbsp;&nbsp;<a href="#">Language</a></li>
 
@@ -324,7 +568,7 @@
 </div>
 
 <!--register Modal -->
-  <div class="modal fade" id="regModal" role="dialog" style="margin-top: 1%">
+  <div class="modal fade" id="regModal" role="dialog">
     <div class="modal-dialog"  class="mod">
       <div class="modal-content" style="border-radius: 0">
         <div class="modal-header" style="background-color:#262626; color: white;font-family: Open Sans">
@@ -339,7 +583,7 @@
     <div class="col-xs-4"></div>
     <div class="col-xs-2" style="margin-left: -12px"><img src="logo.jpg"  class="img-circle" style="display: inline" width="60" height="60"></div>
       <div class="col-xs-4">
-         <h3><div style="margin-top: 12px;margin-left: -2px">abula</div></h3>
+         <h3><div  class="modal_brand_space">abula</div></h3>
       </div>
     </div>
 
@@ -359,7 +603,7 @@
       </div> 
 
       <div class="form-group">
-        <select class="form-control" id="select_college" required style="border-radius: 0;padding-left: 9px" limit="5">
+        <select class="form-control" id="select_college" required style="border-radius: 0;padding-left: 9px">
           <option>College</option>
           <option>National Institute of Technology, Delhi</option>
           <option>National Institute of Technology, Warangal</option>
@@ -386,15 +630,16 @@
       <div class="form-group">
         <select class="form-control" id="select_branch" required style="border-radius: 0;padding-left: 9px">
           <option>Branch</option>
-          <option>Electronics and Communication Engineering</option>
-          <option>Computer Science Engineering</option>
-          <option>Electrical Engineering</option>
-          <option>Mechanical Engineering</option>
-          <option>Civil Engineering</option>
+          <option>Electronics and Communication</option>
+          <option>Computer Science</option>
+          <option>Electrical</option>
+          <option>Mechanical</option>
+          <option>Chemical</option>
+          <option>Civil</option>
           <option>Metallurgy</option>
           <option>Robotics</option>
-          <option>Aeronautical Engineering</option>
-          <option>Marine Engineering</option>
+          <option>Aeronautical</option>
+          <option>Marine</option>
         </select>
       </div>
 
@@ -427,7 +672,7 @@
 
 
 <!--login Modal -->
-  <div class="modal fade" id="logModal" role="dialog" style="margin-top: 1%">
+  <div class="modal fade" id="logModal" role="dialog" >
     <div class="modal-dialog"  class="mod">
      <div class="modal-content" style="border-radius: 0">
         <div class="modal-header" style="background-color:#262626; color: white;font-family: Open Sans">
@@ -441,7 +686,7 @@
         <div class="col-xs-4"></div>
         <div class="col-xs-2" style="margin-left: -12px"><img src="logo.jpg"  class="img-circle" style="display: inline" width="60" height="60"></div>
         <div class="col-xs-4">
-          <h3><div style="margin-top: 12px;margin-left: -2px">abula</div></h3>
+          <h3><div class="modal_brand_space">abula</div></h3>
         </div>
      </div>
 
@@ -485,7 +730,7 @@
 </div>
 
  <!--Forgot Modal -->
-<div class="modal fade" id="forgotModal" role="dialog" style="margin-top: 1%">
+<div class="modal fade" id="forgotModal" role="dialog" >
   <div class="modal-dialog"  class="mod">
     <div class="modal-content" style="border-radius: 0">
         <div class="modal-header" style="background-color:#262626; color: white;font-family: Open Sans">
@@ -499,7 +744,7 @@
               <div class="col-xs-4"></div>
               <div class="col-xs-2" style="margin-left: -12px"><img src="logo.jpg"  class="img-circle" style="display: inline" width="60" height="60"></div>
               <div class="col-xs-4">
-              <h3><div style="margin-top: 12px;margin-left: -2px">abula</div></h3>
+              <h3><div class="modal_brand_space">abula</div></h3>
               </div>
             </div>
 
@@ -528,6 +773,11 @@
   </div>
 </div>
 
+<!-- to create overlay effect ( i.e. to show please login to like, comment or share ) -->
+<div id="overlay" onclick="off()">
+  <div id="text">Please login to<br> like, comment or share
+  </div>
+</div>
 
 <script type="text/javascript">
    function reg_modal_on()
@@ -545,6 +795,26 @@
   function val()
   {
       setTimeout(function(){$('#logModal').modal();},420);
+  }
+
+  /* function get_focus(element)
+  {
+    var x = element.getAttribute("id");
+    console.log(x);
+    var y = x+'.1';
+    console.log(y);
+    document.getElementById(y).focus();
+  }
+  */
+
+  function on() 
+  {
+    document.getElementById("overlay").style.display = "block";
+  }
+
+  function off()
+  {
+    document.getElementById("overlay").style.display = "none"; 
   }
 </script>
 </body>
