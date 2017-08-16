@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chemical</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./logo.jpg">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+  #habula_space
+  {
+    margin-left: 45%;
+  }
+
+  #starting_on_or_before_cse
+  {
+    border-radius:0;
+    -webkit-appearance:none;
+
+  }
+  #starting_on_or_after_cse
+  {
+    border-radius:0;
+    -webkit-appearance:none;
+  }
+  #small_devices
+  {
+    display:none;
+  }
+  .footer_list
+  {
+    display:inline;
+  }
+  .post_heading
+  {
+    padding-left: 15px;
+  }
+
+
+     /* this is to remove the margin-left of habula word in the header (i.e. top of the web page) */
+    @media only screen and (max-width: 768px)
+    {
+       #habula_space
+      {
+        margin-left: 0;
+      }
+      #small_devices
+      {
+        display:block;
+      }
+      #large_devices
+      {
+        display: none;
+      }
+    }
+
+     /* this is to change the padding-left of post heading */
+    @media only screen and (max-width: 650px)
+    {
+      .post_heading
+      {
+        padding-left: 30px;
+      }
+    }
+
+    /* this is to change the padding-left of profile pic present in every post */
+     @media only screen and (max-width: 400px)
+    {
+      .profile_pic
+      {
+        padding-left: 8px;
+      }
+    }
+
+</style>
+<body>
+  <div class="container-fluid" style="padding:0">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0;margin: 0;border: 0;background-color: rgb(16,16,16)">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" style="color: white;" id="brand"><b  id="habula_space">Habula</b> </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">  
+            <li><a href="https://habula1.herokuapp.com/profile" style="color:white;"><span class="glyphicon glyphicon-edit"></span> My Profile</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;font-size:15px;"><span class="glyphicon glyphicon-export" ></span> Events <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#bookmarks"><i class="glyphicon glyphicon-bookmark"></i>&nbsp;&nbsp;Bookmarked Events</a></li>
+                  <li><a href="#my_events"><i class="glyphicon glyphicon-folder-close"></i>&nbsp;&nbsp;My Events</a></li>
+                  <li><a href="#post_an_event"><i class="glyphicon glyphicon-send"></i>&nbsp;&nbsp;Post an Event</a></li>
+                </ul>
+            </li>  
+            <li><a href="#about_us" style="color:white;"><span class="glyphicon glyphicon-exclamation-sign"></span> About Us</a></li>      
+            <li>
+              <a href="#logout"  style="color:white"><span class="glyphicon glyphicon-log-out" ></span> Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="container-fluid" style="margin-top:100px;">
+    <div class="row">
+      <div class="col-md-3 col-sm-4" id="large_devices">
+          <div class="panel panel-default" style="border-radius:0">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse1" style="text-decoration:none">
+                  <span class="glyphicon glyphicon-filter"></span> 
+                Filters</a>
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <div class="form-group has-feedback">
+                  <label for="category_cse" class="control-label" style="font-size:13px;color:#333"> Category :</label><br>
+                  <select class="form-control" id="category_cse" style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" name="category_use">
+                    <option value="" disabled="disabled" selected="selected">Choose category</option>
+                    <option value="programming">Programming</option>
+                    <option value="hacking">Hacking</option>
+                    <option value="android development">Android Development</option>
+                      
+                  </select>
+                  <span class="glyphicon glyphicon-triangle-bottom form-control-feedback"></span>
+                </div>
+                
+                <div class="form-group has-feedback">
+                  <label for="community_cse" class="control-label" style="font-size:13px;color:#333"> Community :</label><br>
+                  <select class="form-control" id="community_cse" required style="border-radius: 0;padding-left: 9px;-webkit-appearance:none">
+                    <option value="" disabled="disabled" selected="selected">Choose community</option>
+                    <option value="electronics and communication">Electronics and Communication</option>
+                    <option value="computer science">Computer Science</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="chemical">Chemical</option>
+                    <option value="civil">Civil</option>
+                    <option value="metallurgy">Metallurgy</option>
+                    <option value="robotics">Robotics</option>
+                    <option value="aeronautical">Aeronautical</option>
+                    <option value="marine">Marine</option>    
+                  </select>
+                  <span class="glyphicon glyphicon-book form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                  <label for="location_cse" class="control-label" style="font-size:13px;color:#333"> Location :</label><br>
+                  <select class="form-control" id="location_cse" required style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" title="Please select a state from the list.">
+                    <option value="" disabled="disabled" selected="selected">Choose location</option>
+                    <option value="andhra pradesh">Andhra Pradesh</option>
+                    <option value="arunachal pradesh">Arunachal Pradesh</option>
+                    <option value="assam">Assam</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="chandigarh">Chandigarh</option>
+                    <option value="chattisgarh">Chattisgarh</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="goa">Goa</option>
+                    <option value="gujarat">Gujarat</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="himachal pradesh">Himachal Pradesh</option>
+                    <option value="jammu and kashmir">Jammu and Kashmir</option>
+                    <option value="jharkhand">Jharkhand</option>
+                    <option value="karnataka">Karnataka</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="madhya pradesh">Madhya Pradesh</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="manipur">Manipur</option>
+                    <option value="meghalaya">Meghalaya</option>
+                    <option value="mizoram">Mizoram</option>
+                    <option value="nagaland">Nagaland</option>
+                    <option value="orissa">Orissa</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="rajasthan">Rajasthan</option>
+                    <option value="sikkim">Sikkim</option>
+                    <option value="tamilnadu">Tamilnadu</option>
+                    <option value="tripura">Tripura</option>
+                    <option value="uttarpradesh">Uttar Pradesh</option>
+                    <option value="uttarakhand">Uttarakhand</option>
+                    <option value="westbengal">WestBengal</option>
+                      
+                  </select>
+                  <span class="glyphicon glyphicon-globe form-control-feedback"></span>
+                </div>
+                <label  style="font-size:13px;color:#333">Upcoming Events :</label><br>
+                <div class="form-group has-feedback">
+                  
+                  <label for="starting_on_or_after_cse" class="control-label" style="font-size:13px;color:#333">On or After</label><br>
+                  <input class="form-control" id="starting_on_or_after_cse" type="date" placeholder="Choose date" title="Please select a date." name="starting_on_or_after_cse">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback"></span>      
+                </div>
+                <div class="form-group has-feedback">
+                  <label for="starting_on_or_before_cse" class="control-label" style="font-size:13px;color:#333">On or Before</label><br>
+                  <input class="form-control" id="starting_on_or_before_cse" type="date" placeholder="Choose date" title="Please select a date." name="starting_on_or_before_cse">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback"></span>      
+                </div>
+                <input type="submit" class="btn btn-primary" value="Filter" style="float:right;border-radius:0;">
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-xs-12" id="small_devices">
+          <div class="panel panel-default" style="border-radius:0">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse12" style="text-decoration:none">
+                  <span class="glyphicon glyphicon-filter"></span> 
+                Filters</a>
+              </h4>
+            </div>
+            <div id="collapse12" class="panel-collapse collapse">
+              <div class="panel-body">
+                <div class="form-group has-feedback">
+                  <label for="category_cse" class="control-label" style="font-size:13px;color:#333"> Category :</label><br>
+                  <select class="form-control" id="category_cse" style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" name="category_use">
+                    <option value="" disabled="disabled" selected="selected">Choose category</option>
+                    <option value="programming">Programming</option>
+                    <option value="hacking">Hacking</option>
+                    <option value="android development">Android Development</option>
+                      
+                  </select>
+                  <span class="glyphicon glyphicon-triangle-bottom form-control-feedback"></span>
+                </div>
+                
+                <div class="form-group has-feedback">
+                  <label for="community_cse" class="control-label" style="font-size:13px;color:#333"> Community :</label><br>
+                  <select class="form-control" id="community_cse" required style="border-radius: 0;padding-left: 9px;-webkit-appearance:none">
+                    <option value="" disabled="disabled" selected="selected">Choose community</option>
+                    <option value="electronics and communication">Electronics and Communication</option>
+                    <option value="computer science">Computer Science</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="chemical">Chemical</option>
+                    <option value="civil">Civil</option>
+                    <option value="metallurgy">Metallurgy</option>
+                    <option value="robotics">Robotics</option>
+                    <option value="aeronautical">Aeronautical</option>
+                    <option value="marine">Marine</option>    
+                  </select>
+                  <span class="glyphicon glyphicon-book form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                  <label for="location_cse" class="control-label" style="font-size:13px;color:#333"> Location :</label><br>
+                  <select class="form-control" id="location_cse" required style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" title="Please select a state from the list.">
+                    <option value="" disabled="disabled" selected="selected">Choose location</option>
+                    <option value="andhra pradesh">Andhra Pradesh</option>
+                    <option value="arunachal pradesh">Arunachal Pradesh</option>
+                    <option value="assam">Assam</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="chandigarh">Chandigarh</option>
+                    <option value="chattisgarh">Chattisgarh</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="goa">Goa</option>
+                    <option value="gujarat">Gujarat</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="himachal pradesh">Himachal Pradesh</option>
+                    <option value="jammu and kashmir">Jammu and Kashmir</option>
+                    <option value="jharkhand">Jharkhand</option>
+                    <option value="karnataka">Karnataka</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="madhya pradesh">Madhya Pradesh</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="manipur">Manipur</option>
+                    <option value="meghalaya">Meghalaya</option>
+                    <option value="mizoram">Mizoram</option>
+                    <option value="nagaland">Nagaland</option>
+                    <option value="orissa">Orissa</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="rajasthan">Rajasthan</option>
+                    <option value="sikkim">Sikkim</option>
+                    <option value="tamilnadu">Tamilnadu</option>
+                    <option value="tripura">Tripura</option>
+                    <option value="uttarpradesh">Uttar Pradesh</option>
+                    <option value="uttarakhand">Uttarakhand</option>
+                    <option value="westbengal">WestBengal</option>
+                      
+                  </select>
+                  <span class="glyphicon glyphicon-globe form-control-feedback"></span>
+                </div>
+                <label  style="font-size:13px;color:#333">Upcoming Events :</label><br>
+                <div class="form-group has-feedback">
+                  
+                  <label for="starting_on_or_after_cse" class="control-label" style="font-size:13px;color:#333">On or After</label><br>
+                  <input class="form-control" id="starting_on_or_after_cse" type="date" placeholder="Choose date" title="Please select a date." name="starting_on_or_after_cse">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback"></span>      
+                </div>
+                <div class="form-group has-feedback">
+                  <label for="starting_on_or_before_cse" class="control-label" style="font-size:13px;color:#333">On or Before</label><br>
+                  <input class="form-control" id="starting_on_or_before_cse" type="date" placeholder="Choose date" title="Please select a date." name="starting_on_or_before_cse">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback"></span>      
+                </div>
+                <input type="submit" class="btn btn-primary" value="Filter" style="float:right;border-radius:0;">
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-md-3 col-sm-4  col-xs-12" style="float:right">
+         <div class="panel panel-default" style="border-radius:0">
+           <div class="panel-body">
+              
+              <p style="text-align:center"><i class="fa fa-users fa-5x" aria-hidden="true"></i></p><br>
+              <h4 style="text-align:center">MEMBERS</h4>
+              <h3 style="text-align:center" id="followers_cse">0</h3>
+
+           </div>
+         </div>
+      </div>
+      <div class="col-md-6 col-sm-4 col-xs-12">
+        <div class="panel panel-default" style="border-radius:0;">
+          <div class="panel-body" style="padding-bottom:23px">
+              
+            <h3 style="text-align:center">Weclome to CHEMICAL community !</h3>
+            <h4 style="display:inline;"><i class="fa fa-quote-left" style="padding-left:40px"></i></h4>&nbsp;&nbsp;<span style="text-align:justify">The meeting of two personalities is like contact of two chemical substances. If there is any reaction both are transformed.<br>- We, the Chemical Engineers are not gentle people. We like high temperatures and high pressures.</span>
+          </div>
+        </div>
+
+
+
+        <div class="panel panel-default" style="border-radius: 0;border: 1px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)" id="first_post">
+          <div class="panel-heading" style="border: 0">
+            <div  class="row">
+              <div class="col-xs-0"></div>
+                <div class="col-xs-1 profile_pic" >  
+                  <img src="bulb.jpg" class="img-circle" width="40px" height="40px" >
+                </div>
+                <div class="col-xs-10 post_heading" style="text-align: justify;"> <b>Kanakaraju Gullapudi</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body" style="border: 0">
+            <div class="row">
+              <div class="col-sm-1" ></div>
+              <div class="col-sm-10">
+                <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.
+                </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+          </div>
+          <div class="panel-footer" style="border: 0">
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-11">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>
+                <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1234.2">Comment</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-share-alt"></span>
+                <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <form>
+                  <div class="form-group" style="margin: 0">
+                    <input type="text" name="comment" placeholder="Type your comment here and press enter" id="1234.2.1" class="form-control" style="border-radius: 0;border: 0" autocomplete="off">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div> 
+        </div>
+<br>
+
+    <div class="panel panel-default" style="border-radius: 0;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
+        <div class="panel-heading" style="border: 0">
+          <div  class="row">
+            <div class="col-xs-0"></div>
+            <div class="col-xs-1 profile_pic">  
+              <img src="bulb.jpg" class="img-circle" width="40px" height="40px">
+            </div>
+            <div class="col-xs-11 post_heading" style="text-align: justify;"> <b>Raman Vanakalla</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b>
+            </div>
+          </div>
+        </div>
+      <div class="panel-body" style="border: 0">
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.
+           </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+      </div>
+      <div class="panel-footer" style="border: 0"> 
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-11">
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="5678.2">Comment</button>&nbsp;&nbsp;&nbsp;&nbsp;
+           <span class="glyphicon glyphicon-share-alt"></span>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <form>
+              <div class="form-group" style="margin: 0">
+                <input type="text" name="comment" placeholder="Type your comment here and press enter" id="5678.2.1" class="form-control" style="border-radius: 0;border: 0" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
+
+    <div class="panel panel-default" style="border-radius: 0;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
+      <div class="panel-heading" style="border: 0">
+        <div  class="row">
+          <div class="col-xs-0"></div>
+          <div class="col-xs-1 profile_pic">  
+            <img src="bulb.jpg" class="img-circle" width="40px" height="40px">
+          </div>
+          <div class="col-xs-11 post_heading" style="text-align: justify;"> <b>Vijay Raj, the selfie addict</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body" style="border: 0">
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+      </div>
+      <div class="panel-footer" style="border: 0"> 
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-11">
+             <span class="glyphicon glyphicon-thumbs-up"></span>
+             <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>&nbsp;&nbsp;&nbsp;&nbsp;
+             <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>
+             <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1289.2">Comment</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="glyphicon glyphicon-share-alt"></span>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <form>
+              <div class="form-group" style="margin: 0">
+                <input type="text" name="comment" placeholder="Type your comment here and press enter" id="1289.2.1" class="form-control" style="border-radius: 0;border: 0" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br>
+<!-- footer -->
+
+<div style="background-color: rgb(16, 16, 16);color: white;">
+<div class="container">
+  <ul style="list-style-type: none;padding: 3% 7%;">
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;Habula ©2017&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#">User&nbsp;Agreement</a>&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#">Privacy&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#"  id="community_footer">Community&nbsp;Guidelines</a>&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#">Cookie&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#" id="copyright_footer">Copyright&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#">Guest&nbsp;Controls</a>&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#">Language</a></li>
+
+  </ul>
+  
+</div>
+</div>
+
+<!-- footer -->
+</body>
+</html>
