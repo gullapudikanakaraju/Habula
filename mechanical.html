@@ -15,6 +15,10 @@
   {
     margin-left: 45%;
   }
+  #members_text
+  {
+    text-align:center;
+  }
 
   #starting_on_or_before_cse
   {
@@ -42,7 +46,7 @@
 
 
      /* this is to remove the margin-left of habula word in the header (i.e. top of the web page) */
-    @media only screen and (max-width: 768px)
+    @media only screen and (max-width: 767px)
     {
        #habula_space
       {
@@ -59,6 +63,42 @@
     }
 
      /* this is to change the padding-left of post heading */
+    @media only screen and (max-width: 1200px) and (min-width: 880px)
+    {
+      .post_heading
+      {
+        padding-left: 30px;
+      }
+    }
+
+    @media only screen and (max-width:880px) and (min-width: 784px)
+    {
+      .post_heading
+      {
+        padding-left: 40px;
+      }
+    }
+
+    @media only screen and (max-width: 860px) and (min-width: 768px)
+    {
+      #members_text
+      {
+        font-size: 16px;
+        margin-left: -5px;
+      }
+    }
+
+    @media only screen and (max-width: 784px) and (min-width: 768px)
+    {
+      .post_heading
+      {
+        padding-left: 40px;
+      }
+      .profile_pic
+      {
+        padding-left: 12px;
+      }
+    }
     @media only screen and (max-width: 650px)
     {
       .post_heading
@@ -312,7 +352,7 @@
            <div class="panel-body">
               
               <p style="text-align:center"><i class="fa fa-users fa-5x" aria-hidden="true"></i></p><br>
-              <h4 style="text-align:center">MEMBERS</h4>
+              <h4 id="members_text">MEMBERS</h4>
               <h3 style="text-align:center" id="followers_cse">0</h3>
 
            </div>
@@ -356,9 +396,9 @@
               <div class="col-sm-1"></div>
               <div class="col-sm-11">
                 <span class="glyphicon glyphicon-thumbs-up"></span>
-                <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>&nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>
-                <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1234.2">Comment</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="glyphicon glyphicon-share-alt"></span>
+                <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button><i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px;padding-left:8px"></i>
+                <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1234.2">Comment</button>
+                <span class="glyphicon glyphicon-share-alt" style="padding-left:8px"></span>
                 <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
               </div>
             </div>
@@ -401,10 +441,10 @@
           <div class="col-sm-1"></div>
           <div class="col-sm-11">
             <span class="glyphicon glyphicon-thumbs-up"></span>
-            <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>
-            <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="5678.2">Comment</button>&nbsp;&nbsp;&nbsp;&nbsp;
-           <span class="glyphicon glyphicon-share-alt"></span>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>
+            <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px;padding-left:8px"></i>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="5678.2">Comment</button>
+           <span class="glyphicon glyphicon-share-alt" style="padding-left:8px"></span>
             <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
           </div>
         </div>
@@ -447,10 +487,10 @@
           <div class="col-sm-1"></div>
           <div class="col-sm-11">
              <span class="glyphicon glyphicon-thumbs-up"></span>
-             <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>&nbsp;&nbsp;&nbsp;&nbsp;
-             <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px"></i>
-             <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1289.2">Comment</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span class="glyphicon glyphicon-share-alt"></span>
+             <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>
+             <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px;padding-left:8px"></i>
+             <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1289.2">Comment</button>
+            <span class="glyphicon glyphicon-share-alt" style="padding-left:8px"></span>
             <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
           </div>
         </div>
