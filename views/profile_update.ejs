@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+    $(function(){
+      if('<%= gender %>'== 'male')
+      {
+        document.getElementById('gen').removeAttribute('selected');
+        document.getElementById('male').setAttribute('selected','selected');
+      }
+      if('<%= gender %>'== 'female')
+      {
+        document.getElementById('gen').removeAttribute('selected');
+        document.getElementById('female').setAttribute('selected','selected');
+      }
+      if('<%= gender %>'== 'others')
+      {
+        document.getElementById('gen').removeAttribute('selected');
+        document.getElementById('others').setAttribute('selected','selected');
+      }
+
+      if('<%= qualification %>'== 'btech')
+      { 
+        document.getElementById('qualify').removeAttribute('selected');
+        document.getElementById('btech').setAttribute('selected','selected');
+      }
+      if('<%= qualification %>'== 'mtech')
+      {
+        document.getElementById('qualify').removeAttribute('selected');
+        document.getElementById('mtech').setAttribute('selected','selected');
+      }
+      if('<%= qualification %>'== 'phd')
+      {
+        document.getElementById('qualify').removeAttribute('selected');
+        document.getElementById('phd').setAttribute('selected','selected');
+      }
+    });
+
+    function save_change()
+      {
+        document.getElementById('overlay_for_waiting').style.display="block";
+        var data={}; 
+        var xhttp;
+        if(document.getElementById('alternate_email_profile').value !="" || document.getElementById('alternate_email_profile').value != null)
+        {
+          data.alternative_email = document.getElementById('alternate_email_profile').value;
+        }
+        data.dob =document.getElementById('dob_profile').value;
+        if(document.getElementById('mobile_profile').value != null || document.getElementById('mobile_profile').value != "")
+        {
+          data.mobile = document.getElementById('mobile_profile').value;
+        }     
+        data.full_name = document.getElementById('full_name_profile').value;
+        data.gender = document.getElementById('gender_profile').value;
+        data.qualification = document.getElementById('qualification_profile').value;
+        data.grad_start_year = document.getElementById('start_year_profile').value;
+        data.grad_end_year = document.getElementById('end_year_profile').value;
+        console.log("will send request in a while !")
+        console.log(data);
+
+        if(window.XMLHttpRequest)
+        {
+          xhttp= new XMLHttpRequest();
+        }
+        else
+        {
+          xhttp= new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhttp.open('post','https://habula1.herokuapp.com/save_changes', true);
+        xhttp.setRequestHeader('content-type','application/json');
+        xhttp.send(JSON.stringify(data));
+        console.log(JSON.stringify(data));
+
+        xhttp.onreadystatechange = function(){
+          console.log(this.readyState);
+          if(this.readyState==4)
+          {
+            console.log(this.responseText);
+            var x = JSON.parse(this.responseText);
+            console.log(x);
+            if(x.success == true)
+            {
+              $('#overlay_for_waiting').click();
+              var temp = document.getElementById('branch_profile').value;
+              setTimeout(function(){document.getElementById('overlay_for_response').style.display="block";},300);
+              if(temp == 'Computer Science')
+              {
+                setTimeout(function(){document.location.href='https://habula1.herokuapp.com/cse';},500);
+              }
+               if(temp == 'Electronics and Communication')
+              {
+                setTimeout(function(){document.location.href='https://habula1.herokuapp.com/ece';},500);
+              }
+               if(temp == 'Electrical')
+              {
+                setTimeout(function(){document.location.href='https://habula1.herokuapp.com/eee';},500);
+              }
+               if(temp == 'Chemical')
+              {
+                setTimeout(function(){document.location.href='https://habula1.herokuapp.com/chemical';},500);
+              }
+               if(temp == 'Mechanical')
+              {
+                setTimeout(function(){document.location.href='https://habula1.herokuapp.com/mechanical';},500);
+              }
+            }
+            if(x.success == false)
+            {
+              $('#overlay_for_waiting').click();
+              setTimeout(function(){document.getElementById('overlay_response_error').style.display="block";},400);
+            }
+          }
+        }
+        return false;
+      }
+    </script>
+</head>
+
+<style>
+    li
+    {
+      display:inline;
+    }
+    #community_footer
+      {
+        padding-left: 2px;
+      } 
+
+    #copyright_footer
+      {
+        padding-left: 2px;
+      } 
+
+     #accordion
+    {
+      width: 70%;
+      margin:auto;
+    }
+
+    #logo
+    {
+      margin-left: -35px;
+    }
+
+    #overlay_for_waiting, #overlay_for_response, #overlay_response_error
+    {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: none;
+      background-color: rgba(0,0,0,0.8);
+      cursor: pointer;
+      z-index: 20
+    }
+    #text_for_waiting, #text_for_response, #text_response_error
+    {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      color: black;
+      background-color: white;
+      padding: 2% 4%;
+      text-align: center;
+      font-size: 15px
+    }
+  
+  @media only screen and (max-width: 1200px)
+  {
+    #logo
+    {
+      margin-left: -20px;
+    }
+  }
+  @media only screen and (max-width: 992px)
+  {
+    #logo
+    {
+      margin-left: 0px;
+    }
+    #accordion
+    {
+      width: 91%;
+    }
+  }
+
+  @media only screen and (max-width: 767px)
+  {
+    #text_for_waiting, #text_for_response, #text_response_error
+    {
+      width: 40%;
+      padding: 4% 1%;
+      margin: auto;
+    }
+  }
+
+
+  @media only screen and (max-width: 450px)
+  {
+    #text_for_waiting, #text_for_response, #text_response_error
+    {
+      width: 60%;
+      margin: auto;
+      padding: 5% 4%;
+    }
+  }
+
+  @media only screen and (max-width: 400px)
+  {
+    #text_for_waiting, #text_for_response, #text_response_error
+    {
+      width: 68%;
+      margin: auto;
+      padding: 5% 4%;    
+    }
+  }
+
+  @media only screen and (max-width: 350px)
+  {
+    #text_for_waiting, #text_for_response, #text_response_error
+    {
+      width: 75%;
+      margin: auto;
+      padding: 5% 4%;       
+    }
+  }
+
+
+  @media only screen and (max-width: 740px)
+  {
+    #logo
+    {
+      margin-left: 5px;
+    }
+  }
+  @media only screen and (max-width: 670px)
+  {
+    #logo
+    {
+      margin-left: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 620px)
+  {
+    #logo
+    {
+      margin-left: 10px;
+    }
+  }
+    
+    @media only screen and (max-width: 575px)
+  {
+    #logo
+    {
+      margin-left: 12px;
+    }
+  }
+
+    @media only screen and (max-width: 550px)
+  {
+    #logo
+    {
+      margin-left: 15px;
+    }
+  }
+
+  @media only screen and (max-width: 500px)
+  {
+    #logo
+    {
+      margin-left: 20px;
+    }
+    #complete_logo
+    {
+      margin-left: -80px;
+    }
+  }
+  @media only screen and (max-width: 600px)
+  {
+    #complete_logo
+    {
+      margin-left: -60px;
+    }
+  }
+
+  @media only screen and (max-width: 450px)
+  {
+    #logo
+    {
+      margin-left: 25px;
+    }
+  }
+
+  @media only screen and (max-width: 400px)
+  {
+    #logo
+    {
+      margin-left: 28px;
+    }
+  }
+  @media only screen and (max-width: 350px)
+  {
+    #logo
+    {
+      margin-left: 30px;
+    }
+  }
+  @media only screen and (max-width: 330px)
+  {
+    #logo
+    {
+      margin-left: 34px;
+    }
+  }
+    /* these are for adjusting the footer (i.e. bottom of the web page) in mobiles of different resolutions */
+    @media only screen and (max-width: 636px) 
+    {
+      #community_footer
+      {
+        padding-left: 0;
+      }
+    }
+
+     @media only screen and (max-width: 504px) 
+    {
+      #copyright_footer
+      {
+        padding-left: 0;
+      }
+    }
+
+    @media only screen and (max-width: 490px) 
+    {
+      #copyright_footer
+      {
+        padding-left: 5px;
+      }
+      #community_footer
+      {
+        padding-left: 3px;
+      }
+    }
+
+
+     @media only screen and (max-width: 440px) 
+    {
+      #community_footer
+      {
+        padding-left: 6px;
+      }
+    }
+      @media only screen and (max-width: 440px) 
+    {
+      #copyright_footer
+      {
+        padding-left: 8px;
+      }
+    }
+    @media only screen and (max-width: 400px) 
+    {
+      #copyright_footer,#community_footer
+      {
+        padding-left: 2px;
+      }
+      #copyright_footer
+      {
+        padding-left: 4px;
+      }
+    }
+
+
+
+</style>
+
+<body>
+<div class="container">
+<div>
+    <div class="row" style="margin-top:40px" id="complete_logo">
+        <div class="col-xs-5"></div>
+        <div class="col-xs-1"><img src="../logo.jpg"  class="img-circle" style="display: inline" width="60" height="60"></div>
+        <div class="col-xs-4"  id="logo">
+          <h3><div class="modal_brand_space">abula</div></h3>
+        </div>
+    </div>
+    <p style="text-align:center;margin-top:5px">PLEASE COMPLETE YOUR PROFILE TO CONTINUE</p><br>
+  
+ <form action="#" onsubmit="return save_change()">
+ <div class="panel-group" id="accordion">
+    <div class="panel panel-default" style="border-radius:0">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+           <a data-toggle="collapse"  href="#personal_info" style="text-decoration:none;">
+            Personal&nbsp;Information</a>
+        </h4>
+      </div>
+      <div id="personal_info" class="panel-collapse collapse in">
+        <div class="panel-body">
+           
+            <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+              <div class="form-group has-feedback">
+                <input type="text" id="full_name_profile" name="full_name_profile" class="form-control" placeholder="Full Name" tabindex="2" style="border-radius: 0;"  value='<%= full_name %>' title="Full Name" required="required" autocomplete="off">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group has-feedback">
+                <input type="text" id="mobile_profile" name="mobile_profile" class="form-control" placeholder="Mobile" tabindex="1" autocomplete="off" style="border-radius: 0" value="<%= mobile %>" pattern="[0-9]{10,12}" title="Mobile number should contain atleast 10 and atmost 12 digits.">
+                <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>  
+
+            <div class="row">
+              <div class="col-sm-1" col-xs-0></div>
+              <div class="col-sm-10 col-xs-12">
+              <div class="form-group has-feedback">
+                <input type="email" id="email_profile" name="email_profile" class="form-control" placeholder="Email" tabindex="1"  style="border-radius: 0;background-color:rgba(248,248,248,0.6)" disabled="disabled" value='<%= email %>' title="Email Address">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-1 col-xs-0"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-1 col-xs-0"></div>
+              <div class="col-sm-10 col-xs-12">
+              <div class="form-group has-feedback">
+                <input type="email" id="alternate_email_profile" name="alternate_email_profile" class="form-control" placeholder="Alternate Email" tabindex="1"  style="border-radius: 0;" title="Used incase of emergency" value="<%= alternative_email %>" autocomplete="off">
+                <span class="glyphicon glyphicon-info-sign  form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-1 col-xs-0"></div>
+            </div>
+
+            <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+              <div class="form-group has-feedback">
+              <label for="dob_profile" class="control-label" style="color:#666666">* Date of Birth:</label><br>
+                <input type="date" id="dob_profile" name="dob_profile" class="form-control" title="Date of Birth" tabindex="2" style="border-radius: 0;-webkit-appearance: none;"  required="required" value="<%= dob %>">
+ 
+               <!-- -webkit-appearance:none is to remove the default chevron down icon shown in select element -->
+
+                <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group has-feedback">
+            <label for="gender_profile" class="control-label" style="color:#666666">* Gender:</label><br>
+            <select class="form-control" id="gender_profile" required style="border-radius: 0;padding-left: 9px;-webkit-appearance: none;" value="<%= gender %>" title="Gender">
+                <option value="" disabled="disabled" selected="selected" id="gen">Choose One</option>
+                <option value="male" id="male">Male</option>
+                <option value="female" id="female">Female</option>
+                <option value="others" id="others">Others</option>
+            </select>
+
+                <span class="glyphicon glyphicon-triangle-bottom form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div> 
+         
+        </div>
+      </div>
+    </div><br>
+  <div class="panel panel-default" style="border-radius:0">
+    <div class="panel-heading">
+      <h4 class="panel-title">  
+        Education
+      </h4>
+    </div>
+    <div  class="panel-collapse collapse in ">
+      <div class="panel-body">
+        
+            <div class="row">
+              <div class="col-sm-1 col-xs-0"></div>
+              <div class="col-sm-10 col-xs-12">
+              <div class="form-group has-feedback">
+                <input type="text" id="college_profile" name="college_profile" class="form-control" placeholder="College" tabindex="1"  style="border-radius: 0;background-color:rgba(248,248,248,0.6)" disabled="disabled" value='<%= college %>' title="College">
+                <span class="glyphicon glyphicon-inbox form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-1 col-xs-0"></div>
+            </div>
+
+             <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+              <div class="form-group has-feedback">
+                <input type="text" id="branch_profile" name="branch_profile" class="form-control" placeholder="Branch" tabindex="1"  style="border-radius: 0;background-color:rgba(248,248,248,0.6)" disabled="disabled" value='<%= branch %>' title="Branch">
+                <span class="glyphicon glyphicon-book form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group has-feedback">
+                 
+            <select class="form-control" id="qualification_profile" name="qualification_profile" required style="border-radius: 0;padding-left: 9px;-webkit-appearance: none;" value="<%= qualification %>" title="Qualification">
+                <option value="" disabled="disabled" selected="selected" id="qualify">* Qualification</option>
+                <option value="btech" id="btech">BTech</option>
+                <option value="mtech" id="mtech">MTech</option>
+                  <option value="phd" id="phd">Phd</option>
+        </select>
+
+                <span class="glyphicon glyphicon-triangle-bottom form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+              <div class="form-group has-feedback">
+          <label for="start_year_profile" class="control-label" style="color:#666666">* Graduation Start Year :</label><br>
+          
+              <input class="form-control" id="start_year_profile" type="text" style="border-radius:0" placeholder="2014" required="required" value="<%= grad_start_year %>" pattern="[0-9]{4}" title="Graduation Start Year should contain only 4 digits." autocomplete="off">
+            <span class="glyphicon glyphicon-education form-control-feedback"></span>
+          
+          </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group has-feedback">
+          <label for="end_year_profile" class="control-label" style="color:#666666">* Graduation End Year :</label><br>
+          
+              <input class="form-control" id="end_year_profile" type="text" style="border-radius:0" placeholder="2018" required="required" value="<%= grad_end_year %>" pattern="[0-9]{4}" title="Graduation End Year should contain only 4 digits." autocomplete="off">
+            <span class="glyphicon glyphicon-education form-control-feedback"></span>
+          
+          </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div> 
+            
+      </div>
+    </div>
+  </div><br><br>
+  <input type="submit" class="btn btn-primary" value="Save Changes" style="float:right;border-radius:0;">
+</div>
+
+</form>
+
+</div>
+<br><br><br><br><br>
+
+
+</div>
+<!-- footer -->
+
+<div style="background-color: rgb(16, 16, 16);color: white;margin-bottom:0;padding-bottom:0">
+<div class="container-fluid">
+<center>
+  <ul style="list-style-type: none;padding: 3% 7% 0.8%;">
+    <li>&nbsp;&nbsp;&nbsp;Habula ©2017&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">User&nbsp;Agreement</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Privacy&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <!-- <li>&nbsp;&nbsp;&nbsp;<a href="#"  id="community_footer">Community&nbsp;Guidelines</a>&nbsp;&nbsp;</li>-->
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Cookie&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#" id="copyright_footer">Copyright&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="https://habula1.herokuapp.com/about_us">About&nbsp;Us</a>&nbsp;&nbsp;</li>
+    <!--<li>&nbsp;&nbsp;&nbsp;<a href="#">Language</a></li>-->
+
+  </ul>
+  <a href="https://www.facebook.com/habula1996/" target="_blank"><i class="fa fa-facebook-official" style="font-size:25px;cursor:pointer;color:white" title="Facebook"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-instagram" style="font-size:25px;cursor:pointer" title="Instagram"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-twitter-square" style="font-size:25px;cursor:pointer" title="Twitter"></i>  &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://www.youtube.com/channel/UCiUKYJV7WgPMdFAU4V8pQpg/videos?view_as=subscriber" target="_blank"><i class="fa fa-youtube" style="font-size:25px;cursor:pointer;color:white" title="Youtube"></i></a>
+
+</center>
+<br>
+  
+</div>
+</div>
+
+<div id="overlay_for_waiting" onclick="off_for_waiting()">
+  <div id="text_for_waiting"><i class='fa fa-spinner fa-pulse fa-2x fa-fw'></i>&nbsp;&nbsp;&nbsp;<h3 style="display:inline;">Processing</h3>
+  </div>
+</div>
+
+<div id="overlay_for_response" onclick="off_for_response()">
+  <div id="text_for_response" style="text-align:center">Saved changes successfully !<br>Redirecting ...
+  </div>
+</div>
+
+<div id="overlay_response_error" onclick="off_response_error()">
+  <div id="text_response_error" style="text-align:center">Some Internal error occurred.<br>Please try again later !
+  </div>
+</div>
+
+<script>
+  function off_for_waiting()
+  {
+    document.getElementById("overlay_for_waiting").style.display = "none"; 
+  }
+  function off_for_response()
+  {
+    document.getElementById("overlay_for_response").style.display = "none"; 
+  }
+  function off_response_error()
+  {
+    document.getElementById("overlay_response_error").style.display = "none"; 
+  }
+</script>
+
+</body>
+</html>

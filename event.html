@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <title>Post an Event</title>
+	  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./logo.jpg">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    li
+    {
+    	display:inline;
+    }
+    #community_footer
+      {
+        padding-left: 2px;
+      } 
+
+    #copyright_footer
+      {
+        padding-left: 2px;
+      } 
+
+     #accordion
+    {
+    	width: 70%;
+    	margin:auto;
+    }
+
+    #logo
+    {
+    	margin-left: -35px;
+    }
+  
+	@media only screen and (max-width: 1200px)
+	{
+		#logo
+		{
+			margin-left: -20px;
+		}
+	}
+	@media only screen and (max-width: 992px)
+	{
+		#logo
+		{
+			margin-left: 0px;
+		}
+		#accordion
+		{
+			width: 91%;
+		}
+	}
+
+	@media only screen and (max-width: 740px)
+	{
+		#logo
+		{
+			margin-left: 5px;
+		}
+	}
+	@media only screen and (max-width: 670px)
+	{
+		#logo
+		{
+			margin-left: 10px;
+		}
+	}
+
+	@media only screen and (max-width: 620px)
+	{
+		#logo
+		{
+			margin-left: 10px;
+		}
+	}
+    
+    @media only screen and (max-width: 575px)
+	{
+		#logo
+		{
+			margin-left: 12px;
+		}
+	}
+
+    @media only screen and (max-width: 550px)
+	{
+		#logo
+		{
+			margin-left: 15px;
+		}
+	}
+
+	@media only screen and (max-width: 500px)
+	{
+		#logo
+		{
+			margin-left: 20px;
+		}
+		#complete_logo
+		{
+			margin-left: -80px;
+		}
+	}
+	@media only screen and (max-width: 600px)
+	{
+		#complete_logo
+		{
+			margin-left: -60px;
+		}
+	}
+
+	@media only screen and (max-width: 450px)
+	{
+		#logo
+		{
+			margin-left: 25px;
+		}
+	}
+
+	@media only screen and (max-width: 400px)
+	{
+		#logo
+		{
+			margin-left: 28px;
+		}
+	}
+	@media only screen and (max-width: 350px)
+	{
+		#logo
+		{
+			margin-left: 30px;
+		}
+	}
+	@media only screen and (max-width: 330px)
+	{
+		#logo
+		{
+			margin-left: 34px;
+		}
+	}
+    /* these are for adjusting the footer (i.e. bottom of the web page) in mobiles of different resolutions */
+    @media only screen and (max-width: 636px) 
+    {
+      #community_footer
+      {
+        padding-left: 0;
+      }
+    }
+
+     @media only screen and (max-width: 504px) 
+    {
+      #copyright_footer
+      {
+        padding-left: 0;
+      }
+    }
+
+    @media only screen and (max-width: 490px) 
+    {
+      #copyright_footer
+      {
+        padding-left: 5px;
+      }
+      #community_footer
+      {
+      	padding-left: 3px;
+      }
+    }
+
+
+     @media only screen and (max-width: 440px) 
+    {
+      #community_footer
+      {
+        padding-left: 6px;
+      }
+    }
+      @media only screen and (max-width: 440px) 
+    {
+      #copyright_footer
+      {
+        padding-left: 8px;
+      }
+    }
+    @media only screen and (max-width: 400px) 
+    {
+      #copyright_footer,#community_footer
+      {
+        padding-left: 2px;
+      }
+      #copyright_footer
+      {
+      	padding-left: 4px;
+      }
+    }
+
+
+
+</style>
+
+<body>
+<div class="container">
+<div >
+    <div class="row" style="margin-top:40px" id="complete_logo">
+        <div class="col-xs-5"></div>
+        <div class="col-xs-1"><img src="logo.jpg"  class="img-circle" style="display: inline" width="60" height="60"></div>
+        <div class="col-xs-4"  id="logo">
+          <h3><div class="modal_brand_space">abula</div></h3>
+        </div>
+    </div>
+    <p style="text-align:center;margin-top:5px">PLEASE COMPLETE THE FOLLOWING TO POST AN EVENT</p><br>
+  
+ <form name="parameters">
+ <div class="panel-group" id="accordion">
+    <div class="panel panel-default" style="border-radius:0">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+           <a data-toggle="collapse"  href="#personal_info" style="text-decoration:none;">
+            Personal&nbsp;Information</a>
+        </h4>
+      </div>
+      <div id="personal_info" class="panel-collapse collapse in">
+        <div class="panel-body">
+           
+            <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+              <div class="form-group has-feedback">
+                <label for="full_name_event" class="control-label" style="color:#666666"> Full Name :</label><br>
+                <input type="text" id="full_name_event" name="full_name_event" class="form-control" style="border-radius: 0;background-color:rgba(248,248,248,0.6)" disabled="disabled" title="Full Name">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group has-feedback">
+                  <label for="location_event" class="control-label" style="font-size:13px;color:#333">* Location :</label><br>
+                  <select class="form-control" id="location_event" required style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" title="Please select a state from the list.">
+                    <option value="" disabled="disabled" selected="selected">Choose location</option>
+                    <option value="andhra pradesh">Andhra Pradesh</option>
+                    <option value="arunachal pradesh">Arunachal Pradesh</option>
+                    <option value="assam">Assam</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="chandigarh">Chandigarh</option>
+                    <option value="chattisgarh">Chattisgarh</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="goa">Goa</option>
+                    <option value="gujarat">Gujarat</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="himachal pradesh">Himachal Pradesh</option>
+                    <option value="jammu and kashmir">Jammu and Kashmir</option>
+                    <option value="jharkhand">Jharkhand</option>
+                    <option value="karnataka">Karnataka</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="madhya pradesh">Madhya Pradesh</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="manipur">Manipur</option>
+                    <option value="meghalaya">Meghalaya</option>
+                    <option value="mizoram">Mizoram</option>
+                    <option value="nagaland">Nagaland</option>
+                    <option value="orissa">Orissa</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="rajasthan">Rajasthan</option>
+                    <option value="sikkim">Sikkim</option>
+                    <option value="tamilnadu">Tamilnadu</option>
+                    <option value="tripura">Tripura</option>
+                    <option value="uttarpradesh">Uttar Pradesh</option>
+                    <option value="uttarakhand">Uttarakhand</option>
+                    <option value="westbengal">WestBengal</option>
+                      
+                  </select>
+                  <span class="glyphicon glyphicon-globe form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>  
+
+            <div class="row">
+              <div class="col-sm-1" col-xs-0></div>
+              <div class="col-sm-10 col-xs-12">
+              <div class="form-group has-feedback">
+                <label for="email_event" class="control-label" style="color:#666666"> Email :</label><br>
+                <input type="email" id="email_event" name="email_event" class="form-control" style="border-radius: 0;background-color:rgba(248,248,248,0.6)" disabled="disabled" title="Email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-1 col-xs-0"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-1 col-xs-0"></div>
+              <div class="col-sm-10 col-xs-12">
+              <div class="form-group has-feedback">
+                <label for="college_event" class="control-label" style="color:#666666"> College :</label><br>
+                <input type="text" id="college_event" name="college_event" class="form-control" style="border-radius: 0;background-color:rgba(248,248,248,0.6)" title="College" disabled="disabled">
+                <span class="glyphicon glyphicon-info-sign  form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-1 col-xs-0"></div>
+            </div>
+
+            <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+              <div class="form-group has-feedback">
+                <label for="branch_event" class="control-label" style="color:#666666"> Branch :</label><br>
+                <input type="text" id="branch_event" name="branch_event" class="form-control" title="Branch" style="border-radius: 0;-webkit-appearance: none;background-color:rgba(248,248,248,0.6)" disabled="disabled">
+ 
+               <!-- -webkit-appearance:none is to remove the default chevron down icon shown in select element -->
+
+                <span class="glyphicon glyphicon-education form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group">
+               <label for="id_event" class="control-label" style="color:#666666">* Upload your College ID  :</label><br>
+               <input type="file" id="id_event" name="id_event" class="form-control" title=".PNG, .JPG, .JPEG are accepted" style="border-radius: 0;-webkit-appearance: none;" accept="image/*" required="required">
+              </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div> 
+         
+        </div>
+      </div>
+    </div><br>
+  <div class="panel panel-default" style="border-radius:0">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        Event Information
+      </h4>
+    </div>
+    <div class="panel-collapse collapse in ">
+      <div class="panel-body">
+            <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+             <div class="form-group has-feedback">
+                <label for="event_name" class="control-label" style="color:#666666">* Event Name :</label><br>
+                <input type="text" id="event_name" name="event_name" class="form-control" style="border-radius: 0;" title="Name of the Event" required="required">
+                <span class="glyphicon glyphicon-inbox form-control-feedback"></span>
+              </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group">
+               <label for="id_event" class="control-label" style="color:#666666">* Upload a Proof of the Event  :</label><br>
+               <input type="file" id="id_event" name="id_event" class="form-control" title=".PNG, .JPG, .JPEG are accepted" style="border-radius: 0;-webkit-appearance: none;" accept="image/*" required="required">
+              </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-1 col-xs-0"></div>
+              <div class="col-sm-10 col-xs-12">
+              <div class="form-group has-feedback">
+                <label for="event_content" class="control-label" style="color:#666666">* Event Content :</label><br>
+                <textarea rows="5"  id="event_content" name="event_content" class="form-control" style="border-radius: 0;" required="required" placeholder="Enter the complete details of the event.">
+                </textarea>
+              </div>
+              </div>
+              <div class="col-sm-1 col-xs-0"></div>
+            </div>
+
+             
+
+            <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+              <div class="form-group has-feedback">
+    			<label for="start_date_event" class="control-label" style="color:#666666">* Start Date :</label><br>
+    			
+      		    <input class="form-control" id="start_date_event" type="date" style="border-radius:0;-webkit-appearance:none" required="required" name="start_date_event" title="Start Date of the Event">
+      			<span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+    			
+  			  </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group has-feedback">
+    			<label for="end_date_event" class="control-label" style="color:#666666">* End Date :</label><br>
+    			
+      		    <input class="form-control" id="end_date_event" type="date" style="border-radius:0;-webkit-appearance:none" required="required" name="end_date_event" title="End Date of the Event">
+      			<span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+    			
+  			  </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div> 
+
+            <div class="row">
+              <div class=" col-sm-1"></div> 
+              <div class="col-sm-11">
+                <label for="organizer1_name" class="control-label" style="color:#666666"> Organizers :</label>
+              </div>
+              <div class=" col-sm-1"></div>
+            </div>
+             <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+              <div class="form-group has-feedback">
+          
+          
+              <input class="form-control" id="organizer1_name" type="text" style="border-radius:0"  name="organizer1_name" placeholder="* Name" title="Name of the First Organizer" required="required">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          
+          </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group has-feedback">
+         
+          
+              <input class="form-control" id="organizer1_mobile" type="number" style="border-radius:0"  name="organizer1_mobile" placeholder="* Mobile" required="required" title="Mobile Number of First Organizer">
+            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+          
+          </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div> 
+
+          <div class="row">   
+              <div class=" col-sm-1"></div> 
+              <div class=" col-sm-5 ">
+              <div class="form-group has-feedback">
+          
+          
+              <input class="form-control" id="organizer2_name" type="text" style="border-radius:0"  name="organizer2_name" placeholder="Name(optional)" title="Name of the Second Organizer">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          
+          </div>
+              </div>
+              <div class="col-sm-5 ">
+              <div class="form-group has-feedback">
+         
+          
+              <input class="form-control" id="organizer2_mobile" type="number" style="border-radius:0"  name="organizer2_mobile" placeholder="Mobile(optional)" title="Mobile Number of Second Organizer">
+            <span class="glyphicon glyphicon-phone form-control-feedback"></span>
+          
+          </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+            
+      </div>
+    </div>
+  </div><br><br>
+  <p >*** This post will be sent to the administrator for verification before it gets posted.</p>
+  <input type="submit" class="btn btn-primary" value="Post the Event" style="float:right;border-radius:0;" title="This post will be sent to the administrator for verification before it gets posted.">
+</div>
+
+</form>
+
+</div>
+<br><br><br><br><br>
+
+
+</div>
+<!-- footer -->
+
+<div style="background-color: rgb(16, 16, 16);color: white;margin-bottom:0;padding-bottom:0">
+<div class="container-fluid">
+  <ul style="list-style-type: none;padding: 2% 12%;">
+    <li>&nbsp;&nbsp;&nbsp;Habula ©2017&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">User&nbsp;Agreement</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Privacy&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#"  id="community_footer">Community&nbsp;Guidelines</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Cookie&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#" id="copyright_footer">Copyright&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Guest&nbsp;Controls</a>&nbsp;&nbsp;</li>
+    <li>&nbsp;&nbsp;&nbsp;<a href="#">Language</a></li>
+
+  </ul>
+  
+</div>
+</div>
+</body>
+</html>

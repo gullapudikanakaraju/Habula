@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chemical</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../logo.jpg">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  var dis=0;
+  function show_extra_data(x)
+  {
+    console.log(x);
+    var temp,y;
+    y=x.split('.');
+    temp=y[0]+'.6';
+    console.log(temp);
+    if(dis == 0){
+      // $(temp).toggle();
+      document.getElementById(temp).style.display='block';
+      document.getElementById(x).innerText='show less';
+      dis=1;
+    }
+    else
+    {
+      // $(temp).toggle();
+      document.getElementById(temp).style.display='none';
+      document.getElementById(x).innerText='show more';
+      dis=0;
+    }
+  }
+/*
+  function fetch_bookmarks(com)
+  {
+    var xhttp;
+    if(window.XMLHttpRequest)
+    {
+      xhttp= new XMLHttpRequest();
+    }
+    else
+    {
+      xhttp= new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    xhttp.open('post','https://habula1.herokuapp.com/bookmarks',true);
+    xhttp.setRequestHeader('content-type','application/json');
+    xhttp.send(JSON.stringify({community: com}));
+    xhttp.onreadystatechange= function(){
+      if(this.readyState == 4)
+      {
+        console.log("success");
+        console.log(this.responseText);
+      }
+    };
+    return false;
+  }
+*/
+
+  function like(like_count, identity)
+  {
+    console.log("in like() function");
+    console.log(like_count);
+    console.log(identity);
+    var temp= identity.split('.');
+    temp=temp[0];
+    document.getElementById(temp+'.7').style.visibility='visible';
+    document.getElementById(temp+'.13').style.display='none';
+    document.getElementById(temp+'.14').style.display='inline-block';
+    document.getElementById(temp+'.1').innerText='Liked';
+    if(like_count==0){
+      document.getElementById(temp+'.77').style.visibility='visible';
+    } 
+    document.getElementById(temp+'.7').innerText=like_count+1;
+    console.log('#'+temp+'.1');
+    document.getElementById(temp+'.1').removeAttribute('onclick');
+    var xhttp;
+    if(window.XMLHttpRequest)
+    {
+      xhttp= new XMLHttpRequest();
+    }
+    else
+    {
+      xhttp= new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    xhttp.open('post','/likes_control',true);
+    xhttp.setRequestHeader('content-type','application/json');
+    xhttp.send(JSON.stringify({event_id: temp}));
+
+    xhttp.onreadystatechange= function(){
+      if(this.readyState==4){
+        console.log(this.responseText);
+      }
+    }
+    //$('#'+temp+'.1').prop('onclick',null);
+    //$('#'+temp+'.1').removeAttr('onclick');
+    //document.getElementById(temp+'.1').removeEventListener('click',like);
+  }
+
+  function add_bookmark(event_identity, bookmark_icon_identity)
+  {
+    console.log("in add_bookmark() function");
+    console.log(event_identity);
+    console.log(bookmark_icon_identity);
+    document.getElementById(bookmark_icon_identity).style.display='none';
+    document.getElementById(event_identity+'.12').style.display='inline-block';
+    var xhttp;
+    if(window.XMLHttpRequest)
+    {
+      xhttp= new XMLHttpRequest();
+    }
+    else
+    {
+      xhttp= new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    xhttp.open('post','/add_bookmark',true);
+    xhttp.setRequestHeader('content-type','application/json');
+    xhttp.send(JSON.stringify({event_id: event_identity}));
+
+    xhttp.onreadystatechange= function(){
+      if(this.readyState==4){
+        console.log('response of add bookmark');
+        console.log(this.responseText);
+      }
+    }
+  }
+
+  function remove_bookmark(event_identity, bookmark_icon_identity)
+  {
+    console.log("in remove_bookmark() function");
+    console.log(event_identity);
+    console.log(bookmark_icon_identity);
+    document.getElementById(bookmark_icon_identity).style.display='none';
+    document.getElementById(event_identity+'.11').style.display='inline-block';
+    var xhttp;
+    if(window.XMLHttpRequest)
+    {
+      xhttp= new XMLHttpRequest();
+    }
+    else
+    {
+      xhttp= new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    xhttp.open('post','/remove_bookmark',true);
+    xhttp.setRequestHeader('content-type','application/json');
+    xhttp.send(JSON.stringify({event_id: event_identity}));
+
+    xhttp.onreadystatechange= function(){
+      if(this.readyState==4){
+        console.log('response of remove bookmark');
+        console.log(this.responseText);
+      }
+    }
+  }
+</script>
+  <script>
+    function check_validity()
+    {
+      var a = document.getElementById('choose_community').value;
+      var b = document.getElementById('location_chemical').value;
+      var c = document.getElementById('starting_on_or_after_chemical').value;
+      var d = document.getElementById('starting_on_or_before_chemical').value;
+      if(a==""&& b=="" && c=="" && d=="")
+      {
+        return false;
+      }
+      else
+      {
+        return true;
+        /*
+        console.log(a,b,c,d);
+        var data={};
+        if(a!="")
+        data.community= a;
+        if(b!="")
+        data.location= b;
+        if(c!="")
+        data.starting_on_or_after = c;
+        if(d!="")
+        data.starting_on_or_before = d;
+
+        console.log(data);
+        console.log(JSON.stringify(data));
+        var xhttp;
+        if(window.XMLHttpRequest)
+        {
+          xhttp= new XMLHttpRequest();
+        }
+        else
+        {
+          xhttp= new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        xhttp.open('post','/filtered_eee',true);
+        xhttp.setRequestHeader('content-type','application/json');
+        xhttp.send(JSON.stringify(data));
+      }
+       */
+     // return false;
+    }
+  }
+    function check_validity1()
+    {
+      var a = document.getElementById('small_choose_community').value;
+      var b = document.getElementById('small_location_chemical').value;
+      var c = document.getElementById('small_starting_on_or_after_chemical').value;
+      var d = document.getElementById('small_starting_on_or_before_chemical').value;
+      if(a==""&& b=="" && c=="" && d=="")
+      {
+        return false;
+      }
+      else
+      {
+        return true;
+        /*
+        console.log(a,b,c,d);
+        var data={};
+        if(a!="")
+        data.community= a;
+        if(b!="")
+        data.location= b;
+        if(c!="")
+        data.starting_on_or_after = c;
+        if(d!="")
+        data.starting_on_or_before = d;
+
+        console.log(data);
+        console.log(JSON.stringify(data));
+        var xhttp;
+        if(window.XMLHttpRequest)
+        {
+          xhttp= new XMLHttpRequest();
+        }
+        else
+        {
+          xhttp= new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        xhttp.open('post','/filtered_eee',true);
+        xhttp.setRequestHeader('content-type','application/json');
+        xhttp.send(JSON.stringify(data));
+        */
+      }
+    }
+      // return false;
+  </script>
+  <script>
+    var xhttp;
+    var doc_number = 0;
+    if(window.XMLHttpRequest)
+    {
+      xhttp= new XMLHttpRequest();
+    }
+    else
+    {
+      xhttp= new ActiveXObject("Microsoft.XMLHTTP")
+    }
+
+   $(document).ready(function(){                
+        // $(window).bind('scroll',fetchMore);
+        xhttp.open('post','https://habula1.herokuapp.com/get_chemical_events',true);
+
+          console.log(JSON.stringify({documents_skip : doc_number}));
+          xhttp.setRequestHeader('content-type','application/json');
+          xhttp.send(JSON.stringify({documents_skip : doc_number}));
+          xhttp.onreadystatechange = function(){
+          if(this.readyState == 4)
+          {
+            var output = JSON.parse(this.responseText);
+            console.log(output);
+            var user_id = output.user_id;
+            console.log(user_id);
+            var result = output.data;
+
+            if(result.length !=0)
+            {
+              // $(window).bind('scroll',fetchMore);
+              doc_number=doc_number+5;
+
+              for(var i in result)
+            {
+
+             var x= '<div class="panel panel-default" style="border-radius: 2px 2px 2px 2px;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)"><div class="panel-heading" style="border: 0"><div  class="row"><div class="col-xs-0"></div><div class="col-xs-1 profile_pic"><img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div><div class="col-xs-11 post_heading" style="text-align: justify;"> <b>'+ result[i].full_name +'</b> posted an event which is going to held at <b>'+ result[i].college +'.</b></div></div></div><div class="panel-body" style="border: 0"><div class="row"><div class="col-sm-1"></div><div class="col-sm-10"><div style="text-align: justify;">'+ result[i].event_content+'</div>';
+                
+                x=x+'<div style="text-align:center"><a onclick="show_extra_data(this.id)" style="text-decoration:none;cursor:pointer;color:gray" id="'+ result[i]._id +'.5">show more</a><div class="table-responsive" style="margin-top:5px;display:none" id="'+ result[i]._id +'.6"><table class="table table-striped table-condensed" style="text-align:left;"><tbody style="border:0"><tr><td style="border:0">Event Location </td><td style="border:0">'+ result[i].event_location +'</td></tr><tr><td style="border:0">Event Organisers</td><td style="border:0">  </td></tr><tr><td style="border:0">&nbsp;&nbsp;&nbsp;&nbsp;Name </td><td style="border:0">'+ result[i].event_organiser_first_name +'</td></tr><tr><td style="border:0">&nbsp;&nbsp;&nbsp;&nbsp;Mobile</td><td style="border:0">'+ result[i].event_organiser_first_mobile +'</td></tr>';
+                 if(result[i].event_organiser_second_name!="" && result[i].event_organiser_second_mobile!=null)
+                {
+                  x=x+'<tr><td style="border:0">&nbsp;&nbsp;&nbsp;&nbsp;Name </td><td style="border:0">'+ result[i].event_organiser_second_name +'</td></tr><tr><td style="border:0">&nbsp;&nbsp;&nbsp;&nbsp;Mobile</td><td style="border:0">'+ result[i].event_organiser_second_mobile +'</td></tr>';
+                }
+                x=x+'<tr><td style="border:0">Start Date </td><td style="border:0">'+ result[i].event_start_date +'</td></tr><tr><td style="border:0">End Date</td><td style="border:0">'+ result[i].event_end_date +'</td></tr></tbody></table></div></div>';
+
+               
+
+                if(result[i].likes.count!=0)
+                {
+                  x= x+'<div style="margin-top:12px;margin-bottom:-5px;color:gray;"><b><span class="badge" id="'+ result[i]._id +'.7">'+ result[i].likes.count +'</span></b>&nbsp;<b>Likes</b>';
+                }
+                if(result[i].likes.count==0)
+                {
+                  x= x+'<div style="margin-top:12px;margin-bottom:-5px;color:gray;"><b><span class="badge" style="visibility:hidden" id="'+ result[i]._id +'.7">'+ result[i].likes.count +'</span></b>&nbsp;<b id="'+ result[i]._id +'.77" style="visibility:hidden">Likes</b>';
+                }
+
+                if(result[i].comments.count!=0)
+                {
+                  x=x+'<b><span style="margin-left:10px" class="badge" id="'+ result[i]._id +'.8">'+ result[i].comments.count +'</span></b>&nbsp;<b>Comments</b>';
+                }
+               if(result[i].comments.count==0)
+                {
+                  x=x+'<b><span style="margin-left:10px;visibility:hidden" class="badge" id="'+ result[i]._id +'.8">'+ result[i].comments.count +'</span></b>&nbsp;<b style="visibility:hidden" id="'+ result[i]._id +'.88">Comments</b>';
+                }
+          
+                  x=x+'</div>';
+              
+               x=x+'</div><div class="col-sm-1"></div></div></div><div class="panel-footer" style="border: 0"><div class="row"><div class="col-sm-1"></div><div class="col-sm-11">';
+               // x=x+'<span class="glyphicon glyphicon-thumbs-up"></span><button class="btn btn-link" style="text-decoration: none;"';
+              var found=0;
+              console.log("found value is "+found);
+               for(var j=0;j<result[i].likes.liked_by.length;j++)
+               {
+                 if(result[i].likes.liked_by[j]._id == user_id)
+                 {
+                  found=1;
+                  x=x+'<i class="fa fa-thumbs-up" aria-hidden="true"></i><button class="btn btn-link" style="text-decoration: none;"';
+                  x=x+'id="'+ result[i]._id +'.1">Liked</button>';
+                  break;
+                 }
+               }
+
+               if(found==0)
+               {
+                
+                x=x+'<span class="glyphicon glyphicon-thumbs-up" id="'+ result[i]._id +'.13"></span><i class="fa fa-thumbs-up" aria-hidden="true" style="display:none" id="'+ result[i]._id +'.14"></i><button class="btn btn-link" style="text-decoration: none;"';
+                x=x+'onclick="like('+ result[i].likes.count+','+'this.id)"';
+                x=x+'id="'+ result[i]._id +'.1">Like</button>';
+               }
+
+               // x=x+'id="'+ result[i]._id +'.1">Like</button>';
+               x=x+'<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px;padding-left:8px"></i><button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="'+ result[i]._id+'.2">Comment</button><span class="glyphicon glyphicon-share-alt" style="padding-left:8px"></span><button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="'+ result[i]._id +'.3">Share</button>';
+
+
+               var bookmark_found=0;
+              console.log("bookmarkfound value is "+bookmark_found);
+              for(var j=0;j<result[i].bookmarks.bookmarked_by.length;j++)
+              {
+                if(result[i].bookmarks.bookmarked_by[j]._id == user_id)
+                {
+                  bookmark_found=1;
+                  break;
+                }
+              }
+
+              if(bookmark_found==0)
+              {
+                x=x+ '<i class="fa fa-bookmark-o " aria-hidden="true" style="float:right;cursor:pointer;font-size:20px;padding-top:3px" title="Bookmark this event" onclick="add_bookmark('+ result[i]._id +',this.id)" id="'+ result[i]._id +'.11"></i>';
+
+                x=x+ '<i class="fa fa-bookmark" aria-hidden="true" style="float:right;cursor:pointer;font-size:20px;padding-top:3px;display:none" title="Remove Bookmark" onclick="remove_bookmark('+ result[i]._id +',this.id)" id="'+ result[i]._id +'.12"></i>';
+              }
+              if(bookmark_found==1)
+              {
+               x=x+ '<i class="fa fa-bookmark-o " aria-hidden="true" style="float:right;cursor:pointer;font-size:20px;padding-top:3px;display:none" title="Bookmark this event" onclick="add_bookmark('+ result[i]._id +',this.id)" id="'+ result[i]._id +'.11"></i>';
+
+                x=x+ '<i class="fa fa-bookmark" aria-hidden="true" style="float:right;cursor:pointer;font-size:20px;padding-top:3px;" title="Remove Bookmark" onclick="remove_bookmark('+ result[i]._id +',this.id)" id="'+ result[i]._id +'.12"></i>';
+              }
+
+
+               x=x+'</div></div><div class="row"><div class="col-sm-12"><form><div class="form-group" style="margin: 0"><input type="text" name="comment" placeholder="Type your comment here and press enter" id="'+ result[i]._id+'.4" class="form-control" style="border-radius: 22px;border: 0" autocomplete="off"></div></form></div></div></div></div><br>';
+            document.getElementById('waiting-spinner-first').style.display='none';
+            $(window).bind('scroll',fetchMore);
+            document.getElementById('main_block').innerHTML= document.getElementById('main_block').innerHTML+x;
+            document.getElementById('footer').style.display='block';
+            }
+            if(result.length < 5){
+              $(window).unbind('scroll',fetchMore);
+              document.getElementById("waiting-spinner").style.visibility='hidden';
+              document.getElementById('waiting-spinner-text').style.visibility='visible';
+            }
+            else{
+              document.getElementById("waiting-spinner").style.visibility='visible';
+            }
+          }
+          else
+          {
+            $(window).unbind('scroll',fetchMore);
+            document.getElementById('footer').style.display='block';
+            document.getElementById('waiting-spinner-first').style.display='none';
+            document.getElementById('waiting-spinner-text-first').style.display='block';
+          }
+        }
+      };
+ });
+
+   fetchMore = function (){
+       console.log("scroll event fired");
+       if ( $(window).scrollTop() >= $(document).height()-$(window).height()-200)
+       {
+          $(window).unbind('scroll',fetchMore);
+          xhttp.open('post','https://habula1.herokuapp.com/get_chemical_events',true);
+
+          console.log(JSON.stringify({documents_skip : doc_number}));
+          xhttp.setRequestHeader('content-type','application/json');
+          xhttp.send(JSON.stringify({documents_skip : doc_number}));
+          xhttp.onreadystatechange = function(){
+          if(this.readyState == 4)
+          {
+            var output = JSON.parse(this.responseText);
+            console.log(output);
+            var user_id = output.user_id;
+            console.log(user_id);
+            var result = output.data;
+            if(result.length !=0){
+              $(window).bind('scroll',fetchMore);
+              doc_number=doc_number+5;
+
+
+
+  for( var i in result){
+              var x= '<div class="panel panel-default" style="border-radius: 2px 2px 2px 2px;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)"><div class="panel-heading" style="border: 0"><div  class="row"><div class="col-xs-0"></div><div class="col-xs-1 profile_pic"><img src="bulb.jpg" class="img-circle" width="40px" height="40px"></div><div class="col-xs-11 post_heading" style="text-align: justify;"> <b>'+ result[i].full_name +'</b> posted an event which is going to held at <b>'+ result[i].college +'.</b></div></div></div><div class="panel-body" style="border: 0"><div class="row"><div class="col-sm-1"></div><div class="col-sm-10"><div style="text-align: justify;">'+ result[i].event_content+'</div>';
+                
+                x=x+'<div style="text-align:center"><a onclick="show_extra_data(this.id)" style="text-decoration:none;cursor:pointer;color:gray" id="'+ result[i]._id +'.5">show more</a><div class="table-responsive" style="margin-top:5px;display:none" id="'+ result[i]._id +'.6"><table class="table table-striped table-condensed" style="text-align:left;"><tbody style="border:0"><tr><td style="border:0">Event Location </td><td style="border:0">'+ result[i].event_location +'</td></tr><tr><td style="border:0">Event Organisers</td><td style="border:0">  </td></tr><tr><td style="border:0">&nbsp;&nbsp;&nbsp;&nbsp;Name </td><td style="border:0">'+ result[i].event_organiser_first_name +'</td></tr><tr><td style="border:0">&nbsp;&nbsp;&nbsp;&nbsp;Mobile</td><td style="border:0">'+ result[i].event_organiser_first_mobile +'</td></tr>';
+                 if(result[i].event_organiser_second_name!="" && result[i].event_organiser_second_mobile!=null)
+                {
+                  x=x+'<tr><td style="border:0">&nbsp;&nbsp;&nbsp;&nbsp;Name </td><td style="border:0">'+ result[i].event_organiser_second_name +'</td></tr><tr><td style="border:0">&nbsp;&nbsp;&nbsp;&nbsp;Mobile</td><td style="border:0">'+ result[i].event_organiser_second_mobile +'</td></tr>';
+                }
+                x=x+'<tr><td style="border:0">Start Date </td><td style="border:0">'+ result[i].event_start_date +'</td></tr><tr><td style="border:0">End Date</td><td style="border:0">'+ result[i].event_end_date +'</td></tr></tbody></table></div></div>';
+
+               
+
+                if(result[i].likes.count!=0)
+                {
+                  x= x+'<div style="margin-top:12px;margin-bottom:-5px;color:gray;"><b><span class="badge" id="'+ result[i]._id +'.7">'+ result[i].likes.count +'</span></b>&nbsp;<b>Likes</b>';
+                }
+                if(result[i].likes.count==0)
+                {
+                  x= x+'<div style="margin-top:12px;margin-bottom:-5px;color:gray;"><b><span class="badge" style="visibility:hidden" id="'+ result[i]._id +'.7">'+ result[i].likes.count +'</span></b>&nbsp;<b id="'+ result[i]._id +'.77" style="visibility:hidden">Likes</b>';
+                }
+
+                if(result[i].comments.count!=0)
+                {
+                  x=x+'<b><span style="margin-left:10px" class="badge" id="'+ result[i]._id +'.8">'+ result[i].comments.count +'</span></b>&nbsp;<b>Comments</b>';
+                }
+               if(result[i].comments.count==0)
+                {
+                  x=x+'<b><span style="margin-left:10px;visibility:hidden" class="badge" id="'+ result[i]._id +'.8">'+ result[i].comments.count +'</span></b>&nbsp;<b style="visibility:hidden" id="'+ result[i]._id +'.88">Comments</b>';
+                }
+          
+                  x=x+'</div>';
+              
+               x=x+'</div><div class="col-sm-1"></div></div></div><div class="panel-footer" style="border: 0"><div class="row"><div class="col-sm-1"></div><div class="col-sm-11">';
+               // x=x+'<span class="glyphicon glyphicon-thumbs-up"></span><button class="btn btn-link" style="text-decoration: none;"';
+
+              var like_found=0;
+              console.log("found value is "+like_found);
+              for(var j=0;j<result[i].likes.liked_by.length;j++)
+              {
+                if(result[i].likes.liked_by[j]._id == user_id)
+                {
+                  like_found=1;
+                  x=x+'<i class="fa fa-thumbs-up" aria-hidden="true"></i><button class="btn btn-link" style="text-decoration: none;"';
+                  x=x+ 'id="'+ result[i]._id +'.1">Liked</button>';
+                  break;
+                }
+              }
+
+              if(like_found==0)
+              {
+               x=x+'<span class="glyphicon glyphicon-thumbs-up" id="'+ result[i]._id +'.13"></span><i class="fa fa-thumbs-up" aria-hidden="true" style="display:none" id="'+ result[i]._id +'.14"></i><button class="btn btn-link" style="text-decoration: none;"';
+                x=x+'onclick="like('+ result[i].likes.count+','+'this.id)"';
+                x=x+'id="'+ result[i]._id +'.1">Like</button>';
+              }
+
+              // x=x+ 'id="'+ result[i]._id +'.1">Like</button>';
+              x=x+'<i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px;padding-left:8px"></i><button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="'+ result[i]._id+'.2">Comment</button><span class="glyphicon glyphicon-share-alt" style="padding-left:8px"></span><button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="'+ result[i]._id +'.3">Share</button>';
+
+              var bookmark_found=0;
+              console.log("bookmarkfound value is "+bookmark_found);
+              for(var j=0;j<result[i].bookmarks.bookmarked_by.length;j++)
+              {
+                if(result[i].bookmarks.bookmarked_by[j]._id == user_id)
+                {
+                  bookmark_found=1;
+                  break;
+                }
+              }
+
+              if(bookmark_found==0)
+              {
+                x=x+ '<i class="fa fa-bookmark-o " aria-hidden="true" style="float:right;cursor:pointer;font-size:20px;padding-top:3px" title="Bookmark this event" onclick="add_bookmark('+ result[i]._id +',this.id)" id="'+ result[i]._id +'.11"></i>';
+
+                x=x+ '<i class="fa fa-bookmark" aria-hidden="true" style="float:right;cursor:pointer;font-size:20px;padding-top:3px;display:none" title="Remove Bookmark" onclick="remove_bookmark('+ result[i]._id +',this.id)" id="'+ result[i]._id +'.12"></i>';
+              }
+              if(bookmark_found==1)
+              {
+                x=x+ '<i class="fa fa-bookmark-o " aria-hidden="true" style="float:right;cursor:pointer;font-size:20px;padding-top:3px;display:none" title="Bookmark this event" onclick="add_bookmark('+ result[i]._id +',this.id)" id="'+ result[i]._id +'.11"></i>';
+
+                x=x+ '<i class="fa fa-bookmark" aria-hidden="true" style="float:right;cursor:pointer;font-size:20px;padding-top:3px;" title="Remove Bookmark" onclick="remove_bookmark('+ result[i]._id +',this.id)" id="'+ result[i]._id +'.12"></i>';
+              }
+
+              x=x+ '</div></div><div class="row"><div class="col-sm-12"><form><div class="form-group" style="margin: 0"><input type="text" name="comment" placeholder="Type your comment here and press enter" id="'+ result[i]._id+'.4" class="form-control" style="border-radius: 22px;border: 0" autocomplete="off"></div></form></div></div></div></div><br>';
+
+            document.getElementById('main_block').innerHTML= document.getElementById('main_block').innerHTML+x;
+}
+            if(result.length < 5){
+            $(window).unbind('scroll',fetchMore);
+            document.getElementById("waiting-spinner").style.visibility='hidden';
+            document.getElementById('waiting-spinner-text').style.visibility='visible';
+            }
+            else{
+              document.getElementById("waiting-spinner").style.visibility='visible';
+            }
+            }
+            else
+            {
+              document.getElementById('waiting-spinner').style.visibility='hidden';
+              document.getElementById('waiting-spinner-text').style.visibility='visible';
+            }
+          }
+        };
+        }
+   };
+
+  </script>
+</head>
+<style>
+  #habula_space
+  {
+    margin-left: 45%;
+  }
+  #members_text
+  {
+    text-align:center;
+  }
+
+  #starting_on_or_before_chemical, #small_starting_on_or_before_chemical
+  {
+    border-radius:0;
+    -webkit-appearance:none;
+
+  }
+  #starting_on_or_after_chemical, #small_starting_on_or_after_chemical
+  {
+    border-radius:0;
+    -webkit-appearance:none;
+  }
+  #small_devices
+  {
+    display:none;
+  }
+  .footer_list
+  {
+    display:inline;
+  }
+  .post_heading
+  {
+    padding-left: 15px;
+  }
+
+
+     /* this is to remove the margin-left of habula word in the header (i.e. top of the web page) */
+    @media only screen and (max-width: 767px)
+    {
+       #habula_space
+      {
+        margin-left: 0;
+      }
+      #small_devices
+      {
+        display:block;
+      }
+      #large_devices
+      {
+        display: none;
+      }
+    }
+
+     /* this is to change the padding-left of post heading */
+    @media only screen and (max-width: 1200px) and (min-width: 880px)
+    {
+      .post_heading
+      {
+        padding-left: 30px;
+      }
+    }
+
+    @media only screen and (max-width:880px) and (min-width: 784px)
+    {
+      .post_heading
+      {
+        padding-left: 40px;
+      }
+    }
+
+    @media only screen and (max-width: 860px) and (min-width: 768px)
+    {
+      #members_text
+      {
+        font-size: 16px;
+        margin-left: -5px;
+      }
+    }
+
+    @media only screen and (max-width: 784px) and (min-width: 768px)
+    {
+      .post_heading
+      {
+        padding-left: 40px;
+      }
+      .profile_pic
+      {
+        padding-left: 12px;
+      }
+    }
+    @media only screen and (max-width: 650px)
+    {
+      .post_heading
+      {
+        padding-left: 30px;
+      }
+    }
+
+    /* this is to change the padding-left of profile pic present in every post */
+     @media only screen and (max-width: 400px)
+    {
+      .profile_pic
+      {
+        padding-left: 8px;
+      }
+    }
+
+</style>
+<body>
+  <div class="container-fluid" style="padding:0">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="border-radius: 0;margin: 0;border: 0;background-color: rgb(16,16,16)">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" style="color: white;" id="brand"><b  id="habula_space">Habula</b> </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right" style="padding-right: 7%">  
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;font-size:15px;"><i class="glyphicon glyphicon-bookmark"></i> Bookmarks <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a style="cursor:pointer" href="https://habula1.herokuapp.com/bookmarks/cse">&nbsp;&nbsp;CSE</a></li>
+                  <li><a style="cursor:pointer" href="https://habula1.herokuapp.com/bookmarks/ece">&nbsp;&nbsp;ECE</a></li>
+                  <li><a style="cursor:pointer" href="https://habula1.herokuapp.com/bookmarks/eee">&nbsp;&nbsp;EEE</a></li>
+                  <li><a style="cursor:pointer" href="https://habula1.herokuapp.com/bookmarks/mechanical">&nbsp;&nbsp;MECHANICAL</a></li>
+                  <li><a style="cursor:pointer" href="https://habula1.herokuapp.com/bookmarks/chemical">&nbsp;&nbsp;CHEMICAL</a></li>
+                  <li><a style="cursor:pointer" href="https://habula1.herokuapp.com/bookmarks/all">&nbsp;&nbsp;ALL</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;font-size:15px;"><span class="glyphicon glyphicon-export" ></span> Events <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#my_events"><i class="glyphicon glyphicon-folder-close"></i>&nbsp;&nbsp;My Events</a></li>
+                  <li><a href="https://habula1.herokuapp.com/post_event"><i class="glyphicon glyphicon-send"></i>&nbsp;&nbsp;Post an Event</a></li>
+                </ul>
+            </li>  
+            <li><a href="https://habula1.herokuapp.com/about_us" style="color:white;"><span class="glyphicon glyphicon-exclamation-sign"></span> About Us</a></li>    
+
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;font-size:15px;"><i class="fa fa-wrench" aria-hidden="true"></i> Settings <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://habula1.herokuapp.com/profile"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;My Profile</a></li>
+                  <li><a href="https://habula1.herokuapp.com/change_password"><i class="fa fa-shield" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Change Password</a></li>
+                  <li><a href="https://habula1.herokuapp.com/logout"><i class="glyphicon glyphicon-log-out"></i>&nbsp;&nbsp;Logout</a></li>
+                </ul>
+            </li>  
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="container-fluid" style="margin-top:100px;">
+    <div class="row">
+    <form action='https://habula1.herokuapp.com/filtered' onsubmit="return check_validity()" method="get">
+
+      <div class="col-md-3 col-sm-4" id="large_devices">
+          <div class="panel panel-default" style="border-radius: 2px 2px 2px 2px;">
+            <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse1" style="text-decoration:none;color: black">
+              <h4 class="panel-title">
+                  <span class="glyphicon glyphicon-filter"></span> 
+                Filters
+              </h4>
+            </a>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+              <div class="panel-body">
+              <!--
+                <div class="form-group has-feedback">
+                  <label for="category_cse" class="control-label" style="font-size:13px;color:#333"> Category :</label><br>
+                  <select class="form-control" id="category_cse" style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" name="category_use">
+                    <option value="" disabled="disabled" selected="selected">Choose category</option>
+                    <option value="programming">Programming</option>
+                    <option value="hacking">Hacking</option>
+                    <option value="android development">Android Development</option>
+                      
+                  </select>
+                  <span class="glyphicon glyphicon-triangle-bottom form-control-feedback"></span>
+                </div>
+              -->
+                
+                <div class="form-group has-feedback">
+                  <label for="choose_community" class="control-label" style="font-size:13px;color:#333"> Community :</label><br>
+                  <select class="form-control" id="choose_community"  style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" name="community">
+                    <option value=""  selected="selected">Choose community</option>
+                    <option value="electronics and communication">Electronics and Communication</option>
+                    <option value="computer science">Computer Science</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="chemical">Chemical</option>
+                    <option value="civil">Civil</option>
+                    <option value="metallurgy">Metallurgy</option>
+                    <option value="robotics">Robotics</option>
+                    <option value="aeronautical">Aeronautical</option>
+                    <option value="marine">Marine</option>    
+                  </select>
+                  <span class="glyphicon glyphicon-book form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                  <label for="location_chemical" class="control-label" style="font-size:13px;color:#333"> Location :</label><br>
+                  <select class="form-control" id="location_chemical" style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" title="Please select a state from the list." name="location">
+                    <option value="" selected="selected">Choose location</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chattisgarh">Chattisgarh</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Orissa">Orissa</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamilnadu">Tamilnadu</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                      
+                  </select>
+                  <span class="glyphicon glyphicon-globe form-control-feedback"></span>
+                </div>
+                <label  style="font-size:13px;color:#333">Upcoming Events :</label><br>
+                <div class="form-group has-feedback">
+                  
+                  <label for="starting_on_or_after_chemical" class="control-label" style="font-size:13px;color:#333">On or After</label><br>
+                  <input class="form-control" id="starting_on_or_after_chemical" type="date" placeholder="Choose date" title="Please select a date." name="starting_on_or_after">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback"></span>      
+                </div>
+                <div class="form-group has-feedback">
+                  <label for="starting_on_or_before_chemical" class="control-label" style="font-size:13px;color:#333">On or Before</label><br>
+                  <input class="form-control" id="starting_on_or_before_chemical" type="date" placeholder="Choose date" title="Please select a date." name="starting_on_or_before">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback"></span>      
+                </div>
+                <input type="submit" class="btn btn-primary" value="Filter" style="float:right;border-radius:0;">
+              </div>
+            </div>
+          </div>
+      </div>
+      </form>
+      <form action='https://habula1.herokuapp.com/filtered' onsubmit="return check_validity1()" method="get">
+
+      <div class="col-xs-12" id="small_devices">
+          <div class="panel panel-default" style="border-radius: 2px 2px 2px 2px;">
+            <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse12" style="text-decoration:none;color: black">
+              <h4 class="panel-title">
+                  <span class="glyphicon glyphicon-filter"></span> 
+                Filters
+              </h4>
+            </a>
+            </div>
+            <div id="collapse12" class="panel-collapse collapse">
+              <div class="panel-body">
+              <!--
+                <div class="form-group has-feedback">
+                  <label for="category_cse" class="control-label" style="font-size:13px;color:#333"> Category :</label><br>
+                  <select class="form-control" id="category_cse" style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" name="category_use">
+                    <option value="" disabled="disabled" selected="selected">Choose category</option>
+                    <option value="programming">Programming</option>
+                    <option value="hacking">Hacking</option>
+                    <option value="android development">Android Development</option>
+                      
+                  </select>
+                  <span class="glyphicon glyphicon-triangle-bottom form-control-feedback"></span>
+                </div>
+              -->
+                
+                <div class="form-group has-feedback">
+                  <label for="small_choose_community" class="control-label" style="font-size:13px;color:#333"> Community :</label><br>
+                  <select class="form-control" id="small_choose_community" style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" name="community">
+                    <option value="" selected="selected">Choose community</option>
+                    <option value="electronics and communication">Electronics and Communication</option>
+                    <option value="computer science">Computer Science</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="mechanical">Mechanical</option>
+                    <option value="chemical">Chemical</option>
+                    <option value="civil">Civil</option>
+                    <option value="metallurgy">Metallurgy</option>
+                    <option value="robotics">Robotics</option>
+                    <option value="aeronautical">Aeronautical</option>
+                    <option value="marine">Marine</option>    
+                  </select>
+                  <span class="glyphicon glyphicon-book form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback">
+                  <label for="small_location_chemical" class="control-label" style="font-size:13px;color:#333"> Location :</label><br>
+                  <select class="form-control" id="small_location_chemical" style="border-radius: 0;padding-left: 9px;-webkit-appearance:none" title="Please select a state from the list." name="location">
+                    <option value="" selected="selected">Choose location</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chattisgarh">Chattisgarh</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Orissa">Orissa</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamilnadu">Tamilnadu</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">WestBengal</option>
+                      
+                  </select>
+                  <span class="glyphicon glyphicon-globe form-control-feedback"></span>
+                </div>
+                <label  style="font-size:13px;color:#333">Upcoming Events :</label><br>
+                <div class="form-group has-feedback">
+                  
+                  <label for="small_starting_on_or_after_chemical" class="control-label" style="font-size:13px;color:#333">On or After</label><br>
+                  <input class="form-control" id="small_starting_on_or_after_chemical" type="date" placeholder="Choose date" title="Please select a date." name="starting_on_or_after">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback"></span>      
+                </div>
+                <div class="form-group has-feedback">
+                  <label for="small_starting_on_or_before_chemical" class="control-label" style="font-size:13px;color:#333">On or Before</label><br>
+                  <input class="form-control" id="small_starting_on_or_before_chemical" type="date" placeholder="Choose date" title="Please select a date." name="starting_on_or_before">
+                  <span class="glyphicon glyphicon-calendar form-control-feedback"></span>      
+                </div>
+                <input type="submit" class="btn btn-primary" value="Filter" style="float:right;border-radius:0;">
+              </div>
+            </div>
+          </div>
+      </div>
+      </form>
+
+      <div class="col-md-3 col-sm-2  col-xs-12" style="float:right">
+         <div class="panel panel-default" style="border-radius: 2px 2px 2px 2px;">
+           <div class="panel-body">
+              
+              <p style="text-align:center"><i class="fa fa-users fa-5x" aria-hidden="true"></i></p><br>
+              <h4 id="members_text">MEMBERS</h4>
+              <h3 style="text-align:center" id="followers_cse"><%= count %></h3>
+
+           </div>
+         </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12" id="main_block">
+        <div class="panel panel-default" style="border-radius: 2px 2px 2px 2px;">
+          <div class="panel-body" style="padding-bottom:23px">
+              
+            <h3 style="text-align:center">Welcome to CHEMICAL community&nbsp;!</h3>
+            <h4 style="display:inline;"><i class="fa fa-quote-left" style="padding-left:40px"></i></h4>&nbsp;&nbsp;<span style="text-align:justify">The meeting of two personalities is like contact of two chemical substances. If there is any reaction both are transformed.<br>- We, the Chemical Engineers are not gentle people. We like high temperatures and high pressures.</span>
+          </div>
+        </div>
+        <div id="waiting-spinner-first" style="margin-top:30px">
+          <center><i class='fa fa-circle-o-notch fa-pulse fa-2x fa-fw'></i></center>
+        </div>
+        <h4  style="display:none;margin-top:30px" id="waiting-spinner-text-first"><center>No posts to show !</center></h4>
+
+
+
+        <!--
+
+        <div class="panel panel-default" style="border-radius: 0;border: 1px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)" id="first_post">
+          <div class="panel-heading" style="border: 0">
+            <div  class="row">
+              <div class="col-xs-0"></div>
+                <div class="col-xs-1 profile_pic" >  
+                  <img src="bulb.jpg" class="img-circle" width="40px" height="40px" >
+                </div>
+                <div class="col-xs-10 post_heading" style="text-align: justify;"> <b>Kanakaraju Gullapudi</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body" style="border: 0">
+            <div class="row">
+              <div class="col-sm-1" ></div>
+              <div class="col-sm-10">
+                <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.
+                </div>
+                <div style="margin-top:12px;margin-bottom:-5px;color:gray;">
+                  <b><span class="badge">10</span></b>&nbsp;<b>Likes</b></span><b><span style="margin-left:10px" class="badge">5</span></b>&nbsp;<b>Comments</b>
+                </div>
+              </div>
+              <div class="col-sm-1"></div>
+            </div>
+          </div>
+          <div class="panel-footer" style="border: 0">
+            <div class="row">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-11">
+                <span class="glyphicon glyphicon-thumbs-up"></span>
+                <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button><i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px;padding-left:8px"></i>
+                <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1234.2">Comment</button>
+                <span class="glyphicon glyphicon-share-alt" style="padding-left:8px"></span>
+                <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <form>
+                  <div class="form-group" style="margin: 0">
+                    <input type="text" name="comment" placeholder="Type your comment here and press enter" id="1234.2.1" class="form-control" style="border-radius: 0;border: 0" autocomplete="off">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div> 
+        </div>
+<br>
+
+    <div class="panel panel-default" style="border-radius: 0;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
+        <div class="panel-heading" style="border: 0">
+          <div  class="row">
+            <div class="col-xs-0"></div>
+            <div class="col-xs-1 profile_pic">  
+              <img src="bulb.jpg" class="img-circle" width="40px" height="40px">
+            </div>
+            <div class="col-xs-11 post_heading" style="text-align: justify;"> <b>Raman Vanakalla</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b>
+            </div>
+          </div>
+        </div>
+      <div class="panel-body" style="border: 0">
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.
+          </div>
+          <div style="margin-top:12px;margin-bottom:-5px;color:gray;">
+               <b><span class="badge">10</span></b>&nbsp;<b>Likes</b></span><b><span style="margin-left:10px" class="badge">5</span></b>&nbsp;<b>Comments</b>
+          </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+      </div>
+      <div class="panel-footer" style="border: 0"> 
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-11">
+            <span class="glyphicon glyphicon-thumbs-up"></span>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>
+            <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px;padding-left:8px"></i>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="5678.2">Comment</button>
+           <span class="glyphicon glyphicon-share-alt" style="padding-left:8px"></span>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <form>
+              <div class="form-group" style="margin: 0">
+                <input type="text" name="comment" placeholder="Type your comment here and press enter" id="5678.2.1" class="form-control" style="border-radius: 0;border: 0" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
+
+    <div class="panel panel-default" style="border-radius: 0;border: 0.5px solid rgb(204, 204, 204);box-shadow: 0px 4px 8px rgba(0,0,0,0.4)">
+      <div class="panel-heading" style="border: 0">
+        <div  class="row">
+          <div class="col-xs-0"></div>
+          <div class="col-xs-1 profile_pic">  
+            <img src="bulb.jpg" class="img-circle" width="40px" height="40px">
+          </div>
+          <div class="col-xs-11 post_heading" style="text-align: justify;"> <b>Vijay Raj, the selfie addict</b> posted an event which is going to held at <b>National Institute of Technology, Delhi.</b>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body" style="border: 0">
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <div style="text-align: justify;"><b>Saptrang</b>, the annual cultural fest of <b>National Institute of Technology, Delhi</b> is back. Scheduled to take place from February 28, 2017 to March 1, 2017. Visit this link (<a href="https://www.saptrangnitd.com" target="_blank">"https://www.saptrangnitd.com"</a>) for more and detailed information regarding the events.
+            </div>
+            <div style="margin-top:12px;margin-bottom:-5px;color:gray;">
+              <b><span class="badge">10</span></b>&nbsp;<b>Likes</b></span><b><span style="margin-left:10px" class="badge">5</span></b>&nbsp;<b>Comments</b>
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+      </div>
+      <div class="panel-footer" style="border: 0"> 
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-11">
+             <span class="glyphicon glyphicon-thumbs-up"></span>
+             <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Like</button>
+             <i class="glyphicon glyphicon-pencil" style="padding-bottom: -10px;padding-left:8px"></i>
+             <button class="btn btn-link" style="text-decoration: none;" onclick="on()" id="1289.2">Comment</button>
+            <span class="glyphicon glyphicon-share-alt" style="padding-left:8px"></span>
+            <button class="btn btn-link" style="text-decoration: none;" onclick="on()">Share</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <form>
+              <div class="form-group" style="margin: 0">
+                <input type="text" name="comment" placeholder="Type your comment here and press enter" id="1289.2.1" class="form-control" style="border-radius: 0;border: 0" autocomplete="off">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        -->
+
+
+        
+    </div>
+    
+  </div>
+</div>
+<div style="visibility: hidden" id="waiting-spinner">
+  <center><i class='fa fa-circle-o-notch fa-pulse fa-2x fa-fw'></i></center>
+</div>
+<div  style="visibility: hidden" id="waiting-spinner-text"><center>That's all folks !</center></div>
+
+<br><br><br>
+<!-- footer -->
+
+<div style="background-color: rgb(16, 16, 16);color: white;display: none" id="footer">
+<div class="container">
+<center>
+  <ul style="list-style-type: none;padding: 3% 7% 0.8%;">
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;Habula ©2017&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#">User&nbsp;Agreement</a>&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#">Privacy&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <!-- <li>&nbsp;&nbsp;&nbsp;<a href="#"  id="community_footer">Community&nbsp;Guidelines</a>&nbsp;&nbsp;</li>-->
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#">Cookie&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="#" id="copyright_footer">Copyright&nbsp;Policy</a>&nbsp;&nbsp;</li>
+    <li class="footer_list">&nbsp;&nbsp;&nbsp;<a href="https://habula1.herokuapp.com/about_us">About&nbsp;Us</a>&nbsp;&nbsp;</li>
+    <!--<li>&nbsp;&nbsp;&nbsp;<a href="#">Language</a></li>-->
+
+  </ul>
+  <a href="https://www.facebook.com/habula1996/" target="_blank"><i class="fa fa-facebook-official" style="font-size:25px;cursor:pointer;color:white" title="Facebook"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-instagram" style="font-size:25px;cursor:pointer" title="Instagram"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-twitter-square" style="font-size:25px;cursor:pointer" title="Twitter"></i>  &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://www.youtube.com/channel/UCiUKYJV7WgPMdFAU4V8pQpg/videos?view_as=subscriber" target="_blank"><i class="fa fa-youtube" style="font-size:25px;cursor:pointer;color:white" title="Youtube"></i></a>
+
+</center>
+<br>
+  
+</div>
+</div>
+
+<!-- footer -->
+</body>
+</html>
